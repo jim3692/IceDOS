@@ -11,7 +11,7 @@
 
         privacy.enable = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
 
         # Sites to launch on Firefox PWAs
@@ -38,7 +38,7 @@
 
         beta.enable = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
 
         # Workaround for slow steam downloads
@@ -49,7 +49,7 @@
 
         session.enable = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
       };
     };
@@ -89,13 +89,13 @@
 
       gdm.auto-suspend.enable = mkOption {
         type = types.bool;
-        default = false;
+        default = true;
       };
 
       gnome = {
         enable = mkOption {
           type = types.bool;
-          default = false;
+          default = true;
         };
 
         arcmenu.enable = mkOption {
@@ -105,7 +105,7 @@
 
         caffeine.enable = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
 
         clock-date.enable = mkOption {
@@ -155,13 +155,13 @@
 
       hypr.enable = mkOption {
         type = types.bool;
-        default = true;
+        default = false;
       };
 
       hyprland = {
         enable = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
 
         dual-monitor.enable = mkOption {
@@ -175,19 +175,19 @@
       btrfs-compression = {
         enable = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
 
         # Use btrfs compression for mounted drives
         mounts.enable = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
 
         # Use btrfs compression for root
         root.enable = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
       };
 
@@ -201,7 +201,7 @@
           undervolt = {
             enable = mkOption {
               type = types.bool;
-              default = true;
+              default = false;
             };
 
             value = mkOption {
@@ -248,7 +248,7 @@
       laptop = {
         enable = mkOption {
           type = types.bool;
-          default = false;
+          default = true;
         };
 
         auto-cpufreq.enable = mkOption {
@@ -260,7 +260,7 @@
       # Set to false if hardware/mounts.nix is not correctly configured
       mounts.enable = mkOption {
         type = types.bool;
-        default = true;
+        default = false;
       };
 
       virtualisation = {
@@ -326,23 +326,23 @@
 
           username = mkOption {
             type = types.str;
-            default = "icedborn";
+            default = "knp";
           };
 
           description = mkOption {
             type = types.str;
-            default = "IceDBorn";
+            default = "knp";
           };
 
           git = {
             username = mkOption {
               type = types.str;
-              default = "IceDBorn";
+              default = "jim3692";
             };
 
             email = mkOption {
               type = types.str;
-              default = "github.envenomed@dralias.com";
+              default = "jim3692@gmail.com";
             };
           };
         };

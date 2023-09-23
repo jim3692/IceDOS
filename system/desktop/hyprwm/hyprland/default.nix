@@ -6,7 +6,7 @@
 
   programs.hyprland = lib.mkIf config.desktop.hyprland.enable {
     enable = true;
-    enableNvidiaPatches = config.hardware.gpu.nvidia.enable;
+    # enableNvidiaPatches = config.hardware.gpu.nvidia.enable;
   };
 
   environment = lib.mkIf config.desktop.hyprland.enable {

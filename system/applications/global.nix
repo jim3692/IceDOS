@@ -16,8 +16,8 @@ let
     nix-store --gc
   '';
 
-  vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude"
-    (builtins.readFile ../scripts/create-ns.sh);
+  # vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude"
+  #   (builtins.readFile ../scripts/create-ns.sh);
 
   lout = pkgs.writeShellScriptBin "lout" ''
     pkill -KILL -u $USER
@@ -25,9 +25,9 @@ let
 
   codingDeps = with pkgs; [
     cargo # Rust package manager
-    dotnet-sdk_7 # SDK for .net
+    # dotnet-sdk_7 # SDK for .net
     gcc # C++ compiler
-    gdtoolkit # Tools for gdscript
+    # gdtoolkit # Tools for gdscript
     nixfmt # A nix formatter
     nodejs # Node package manager
     python3 # Python
@@ -59,8 +59,8 @@ in {
 
   environment.systemPackages = with pkgs;
     [
-      (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
-      (callPackage ./self-built/webcord { }) # An open source discord client
+      # (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
+      # (callPackage ./self-built/webcord { }) # An open source discord client
       (firefox.override {
         extraNativeMessagingHosts =
           [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
@@ -74,7 +74,7 @@ in {
       bat # Better cat command
       bless # HEX Editor
       btop # System monitor
-      clamav # Antivirus
+      # clamav # Antivirus
       curtail # Image compressor
       easyeffects # Pipewire effects manager
       efibootmgr # Edit EFI entries
@@ -108,7 +108,7 @@ in {
       pitivi # Video editor
       ranger # Terminal file manager
       rnnoise-plugin # A real-time noise suppression plugin
-      signal-desktop # Encrypted messaging platform
+      # signal-desktop # Encrypted messaging platform
       sunshine # Remote desktop
       tailscale # VPN with P2P support
       tmux # Terminal multiplexer
@@ -117,11 +117,12 @@ in {
       trim-generations # Smarter old nix generations cleaner
       unrar # Support opening rar files
       unzip # An extraction utility
-      vpn-exclude # Run shell with another gateway and IP
+      # vpn-exclude # Run shell with another gateway and IP
       warp # File sync
       wget # Terminal downloader
       wine # Compatibility layer capable of running Windows applications
       winetricks # Wine prefix settings manager
+      wireguard-tools # Wireguard
       woeusb # Windows ISO Burner
       xorg.xhost # Use x.org server with distrobox
       youtube-dl # Video downloader
@@ -144,20 +145,20 @@ in {
 
       # Aliases
       shellAliases = {
-        apx = "apx --aur"; # Use arch as the base apx container
+        # apx = "apx --aur"; # Use arch as the base apx container
         aria2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
         btrfs-compress =
           "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
-        cat = "bat"; # Better cat command
-        chmod = "sudo chmod"; # It's a command that I always execute with sudo
+        # cat = "bat"; # Better cat command
+        # chmod = "sudo chmod"; # It's a command that I always execute with sudo
         clear-keys =
           "sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
-        cp = "rsync -rP"; # Copy command with details
+        # cp = "rsync -rP"; # Copy command with details
         desktop-files-list =
           "ls -l /run/current-system/sw/share/applications"; # Show desktop files location
         list-packages =
           "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
-        ls = "lsd"; # Better ls command
+        # ls = "lsd"; # Better ls command
         mva = "rsync -rP --remove-source-files"; # Move command with details
         n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
         ping = "gping"; # ping with a graph
@@ -167,19 +168,19 @@ in {
           "(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration
         restart-pipewire =
           "systemctl --user restart pipewire"; # Restart pipewire
-        server = "ssh server@192.168.1.2"; # Connect to local server
+        # server = "ssh server@192.168.1.2"; # Connect to local server
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
         steam-link =
           "killall steam 2> /dev/null ; while ps axg | grep -vw grep | grep -w steam > /dev/null; do sleep 1; done && (nohup steam -pipewire > /dev/null &) 2> /dev/null"; # Kill existing steam process and relaunch steam with the pipewire flag
         update =
           "(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && nix flake update && bash rebuild.sh) ; (apx --aur upgrade) ; (bash ~/.config/zsh/proton-ge-updater.sh) ; (bash ~/.config/zsh/steam-library-patcher.sh) ; (bash ~/.config/zsh/update-codium-extensions.sh)"; # Update everything
         v = "nvim"; # Neovim
-        vpn = "ssh -f server@192.168.1.2 'mullvad status'"; # Show VPN status
-        vpn-btop = "ssh -t server@192.168.1.2 'bpytop'"; # Show VPN bpytop
-        vpn-off =
-          "ssh -f server@192.168.1.2 'mullvad disconnect && sleep 1 && mullvad status'"; # Disconnect from VPN
-        vpn-on =
-          "ssh -f server@192.168.1.2 'mullvad connect && sleep 1 && mullvad status'"; # Connect to VPN
+        # vpn = "ssh -f server@192.168.1.2 'mullvad status'"; # Show VPN status
+        # vpn-btop = "ssh -t server@192.168.1.2 'bpytop'"; # Show VPN bpytop
+        # vpn-off =
+        #   "ssh -f server@192.168.1.2 'mullvad disconnect && sleep 1 && mullvad status'"; # Disconnect from VPN
+        # vpn-on =
+        #   "ssh -f server@192.168.1.2 'mullvad connect && sleep 1 && mullvad status'"; # Connect to VPN
       };
 
       interactiveShellInit = ''
@@ -211,7 +212,7 @@ in {
   };
 
   services = {
-    clamav.updater.enable = true;
+    # clamav.updater.enable = true;
     openssh.enable = true;
     tailscale.enable = true;
     udev.packages = [

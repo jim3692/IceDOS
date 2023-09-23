@@ -4,7 +4,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
-    steam-session.url = "github:Jovian-Experiments/Jovian-NixOS";
+    # steam-session.url = "github:Jovian-Experiments/Jovian-NixOS";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,7 +13,7 @@
   };
 
   outputs = { self, nixpkgs, hyprland, home-manager, nur, pipewire-screenaudio
-    , steam-session }@inputs: {
+    }@inputs: {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
@@ -21,7 +21,7 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           hyprland.nixosModules.default
-          steam-session.nixosModules.default
+          # steam-session.nixosModules.default
           ./configuration.nix
         ];
       };
