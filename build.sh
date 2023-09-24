@@ -2,7 +2,7 @@
 
 # cd into script's folder
 cd "$(cd "$(dirname "$0")" && pwd)" || exit
-pwd > .configuration-location
+printf "$PWD" > .configuration-location
 
 # Copy "/etc/nixos/hardware-configuration.nix" to the project
 [ -f "hardware-configuration.nix" ] && rm -f hardware-configuration.nix
@@ -21,6 +21,10 @@ git update-index --skip-worktree .configuration-location
 
 # Build the configuration
 sudo nixos-rebuild switch --flake .
+
+# Untrack files
+git rm --cached --sparse hardware-configuration.nix
+git rm --cached --sparse .configuration-location
 
 # Delete the copied hardware-configuration.nix
 rm -f hardware-configuration.nix
