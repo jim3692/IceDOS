@@ -2,6 +2,11 @@
 { config, pkgs, lib, ... }:
 
 let
+  stashLock = if (config.system.update.stash-flake-lock) then "1" else "0";
+
+  # Rebuild the system configuration
+  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 1 1";
+
   emulators = with pkgs;
     [
       # cemu # Wii U Emulator
@@ -20,6 +25,8 @@ let
     steam # Gaming platform
     steamtinkerlaunch # General tweaks for games
   ];
+
+  shellScripts = [ update ];
 in lib.mkIf config.system.user.main.enable {
   users.users.${config.system.user.main.username}.packages = with pkgs;
     [
@@ -28,7 +35,8 @@ in lib.mkIf config.system.user.main.enable {
       input-remapper # Remap input device controls
       scanmem # Cheat engine for linux
       stremio # Straming platform
-    ] ++ emulators ++ gaming;
+      update # Update the system configuration
+    ] ++ emulators ++ gaming ++ shellScripts;
 
   # Wayland microcompositor
   programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {

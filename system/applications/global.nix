@@ -2,9 +2,12 @@
 { pkgs, config, inputs, lib, ... }:
 
 let
-  trim-generations = pkgs.writeShellScriptBin "trim-generations"
-    (builtins.readFile ../scripts/trim-generations.sh);
+  # Logout from any shell
+  lout = pkgs.writeShellScriptBin "lout" ''
+    pkill -KILL -u $USER
+  '';
 
+  # Garbage collect the nix store
   nix-gc = pkgs.writeShellScriptBin "nix-gc" ''
     gens=${config.system.gc.generations} ;
     days=${config.system.gc.days} ;
@@ -16,12 +19,61 @@ let
     nix-store --gc
   '';
 
-  # vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude"
-  #   (builtins.readFile ../scripts/create-ns.sh);
+  # Rebuild the system configuration
+  rebuild = pkgs.writeShellScriptBin "rebuild" ''
+    # Arguments for update and main user specific commands
+    ARG1=''${1:-0} # Update
+    ARG2=''${2:-0} # Stash
+    ARG3=''${3:-0} # Main user
+    ARG4=''${4:-0} # apx
 
-  lout = pkgs.writeShellScriptBin "lout" ''
-    pkill -KILL -u $USER
+    # Stash flake.lock
+    function stashLock() {
+      git stash store $(git stash create) -m "flake.lock@$(date +%A-%d-%B-%T)"
+    }
+
+    # Navigate to configuration directory
+    cd ${config.system.configuration-location} 2> /dev/null ||
+    (echo 'Configuration path is invalid. Run build.sh manually to update the path!' && false) &&
+
+    # Update specific commands
+    if [ $ARG1 -eq 1 ]; then
+      # Stash the flake lock file
+      if [ $ARG2 -eq 1 ]; then
+        if [ $(git stash list | wc -l) -eq 0 ]; then
+          stashLock
+        else
+          [ -n "$(git diff stash flake.lock)" ] && stashLock
+        fi
+      fi
+
+      nix flake update && bash build.sh
+
+      # Main user specific update commands
+      if [ $ARG3 -eq 1 ]; then
+        bash ~/.config/zsh/proton-ge-updater.sh
+        bash ~/.config/zsh/steam-library-patcher.sh
+      fi
+
+      # Update apx packages
+      if [ $ARG4 -eq 1 ]; then
+        apx --aur upgrade
+      fi
+
+      # Update commands for all users
+      bash ~/.config/zsh/update-codium-extensions.sh
+    else
+      bash build.sh
+    fi
   '';
+
+  # Trim NixOS generations
+  trim-generations = pkgs.writeShellScriptBin "trim-generations"
+    (builtins.readFile ../scripts/trim-generations.sh);
+
+  # Run a shell or command with another namespace
+  vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude"
+    (builtins.readFile ../scripts/create-ns.sh);
 
   codingDeps = with pkgs; [
     cargo # Rust package manager
@@ -33,6 +85,9 @@ let
     python3 # Python
     vscodium # All purpose IDE
   ];
+
+  # Packages to add for a fork of the config
+  myPackages = with pkgs; [ ];
 
   nvchadDeps = with pkgs; [
     beautysh # Bash formatter
@@ -54,20 +109,35 @@ let
     rustfmt # Rust formatter
     stylua # Lua formatter
   ];
+
+  packageOverrides = with pkgs;
+    [
+      # Browser with pipewire-screenaudio connector json
+      (firefox.override {
+        extraNativeMessagingHosts =
+          [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
+      })
+    ];
+
+  packageWraps = with pkgs;
+    [
+      # Pipewire audio plugin for OBS Studio
+      (pkgs.wrapOBS {
+        plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
+      })
+    ];
+
+  selfBuilt = with pkgs; [
+    (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
+    (callPackage ./self-built/webcord { }) # An open source discord client
+  ];
+
+  shellScripts = [ lout nix-gc rebuild trim-generations vpn-exclude ];
 in {
   boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
   environment.systemPackages = with pkgs;
     [
-      # (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
-      # (callPackage ./self-built/webcord { }) # An open source discord client
-      (firefox.override {
-        extraNativeMessagingHosts =
-          [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
-      }) # Browser
-      (pkgs.wrapOBS {
-        plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
-      }) # Pipewire audio plugin for OBS Studio
       android-tools # Tools for debugging android devices
       appimage-run # Appimage runner
       aria # Terminal downloader with multiple connections support
@@ -80,7 +150,6 @@ in {
       efibootmgr # Edit EFI entries
       endeavour # Tasks
       fd # Find alternative
-      feh # Minimal image viewer
       fragments # Bittorrent client following Gnome UI standards
       gimp # Image editor
       git # Distributed version control system
@@ -94,13 +163,12 @@ in {
       killall # Tool to kill all programs matching process name
       kitty # Terminal
       libnotify # Send desktop notifications
-      lout # Logout from any shell
       lsd # Better ls command
+      mission-center # Task manager
       mousai # Song recognizer
       mpv # Video player
       ncdu # Terminal disk analyzer
       newsflash # RSS reader
-      nix-gc # Garbage collect old nix generations
       ntfs3g # Support NTFS drives
       obs-studio # Recording/Livestream
       onlyoffice-bin # Microsoft Office alternative for Linux
@@ -115,10 +183,8 @@ in {
       tmux # Terminal multiplexer
       trayscale # Tailscale GUI
       tree # Display folder content at a tree format
-      trim-generations # Smarter old nix generations cleaner
       unrar # Support opening rar files
       unzip # An extraction utility
-      # vpn-exclude # Run shell with another gateway and IP
       warp # File sync
       wget # Terminal downloader
       wine # Compatibility layer capable of running Windows applications
@@ -128,7 +194,8 @@ in {
       xorg.xhost # Use x.org server with distrobox
       youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
-    ] ++ codingDeps ++ nvchadDeps;
+    ] ++ codingDeps ++ nvchadDeps ++ myPackages ++ packageOverrides
+    ++ packageWraps ++ shellScripts ++ selfBuilt;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
@@ -165,18 +232,12 @@ in {
         ping = "gping"; # ping with a graph
         reboot-windows =
           "sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
-        rebuild = "(cd ${
-            builtins.readFile ../../.configuration-location
-          } 2> /dev/null || (echo 'Configuration path is invalid. Run build.sh manually to update the path!' && false) && bash build.sh)"; # Rebuild the system configuration
         restart-pipewire =
           "systemctl --user restart pipewire"; # Restart pipewire
         # server = "ssh server@192.168.1.2"; # Connect to local server
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
         steam-link =
           "killall steam 2> /dev/null ; while ps axg | grep -vw grep | grep -w steam > /dev/null; do sleep 1; done && (nohup steam -pipewire > /dev/null &) 2> /dev/null"; # Kill existing steam process and relaunch steam with the pipewire flag
-        update = "(cd ${
-            builtins.readFile ../../.configuration-location
-          } 2> /dev/null || (echo 'Configuration path is invalid. Run build.sh manually to update the path!' && false) && nix flake update && bash build.sh) ; (apx --aur upgrade) ; (bash ~/.config/zsh/proton-ge-updater.sh) ; (bash ~/.config/zsh/steam-library-patcher.sh) ; (bash ~/.config/zsh/update-codium-extensions.sh)"; # Update everything
         v = "nvim"; # Neovim
         # vpn = "ssh -f server@192.168.1.2 'mullvad status'"; # Show VPN status
         # vpn-btop = "ssh -t server@192.168.1.2 'bpytop'"; # Show VPN bpytop

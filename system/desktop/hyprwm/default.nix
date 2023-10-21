@@ -4,6 +4,7 @@
   imports = [
     ./home/main.nix
     ./home/work.nix
+    ../../applications/configs/swaync/config.nix
   ]; # Setup home manager for hypr and hyprland
 
   programs =
@@ -17,6 +18,7 @@
       systemPackages = with pkgs; [
         baobab # Disk usage analyser
         blueberry # Bluetooth manager
+        feh # Minimal image viewer
         gnome-online-accounts # Nextcloud integration
         gnome.file-roller # Archive file manager
         gnome.gnome-calculator # Calculator

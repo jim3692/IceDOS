@@ -10,6 +10,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # phps.url = "github:fossar/nix-phps";
   };
 
   outputs = { self, nixpkgs, hyprland, home-manager, nur, pipewire-screenaudio

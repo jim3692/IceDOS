@@ -25,6 +25,7 @@ lib.mkIf config.system.user.work.enable {
 
     xdg = {
       desktopEntries = {
+        # Firefox PWA
         pwas = {
           exec =
             "firefox --no-remote -P PWAs --name pwas ${config.applications.firefox.pwas.sites}";
@@ -32,14 +33,24 @@ lib.mkIf config.system.user.work.enable {
           name = "Firefox PWAs";
           terminal = false;
           type = "Application";
-        }; # Firefox PWA
+        };
 
+        # Run signal without a tray icon
+        signal = {
+          exec = "signal-desktop --hide-tray-icon";
+          icon = "signal-desktop";
+          name = "Signal - No tray";
+          terminal = false;
+          type = "Application";
+        };
+
+        # Force slack to use window decorations
         slack = {
           name = "Slack";
           exec = "slack --enable-features=WaylandWindowDecorations";
           icon = "slack";
           settings = { StartupWMClass = "slack"; };
-        }; # Force slack to use window decorations
+        };
       };
 
       mimeApps = {
@@ -69,30 +80,15 @@ lib.mkIf config.system.user.work.enable {
 
     home.file = {
       # New document options for nautilus
-      "Templates/new" = {
-        text = "";
-        recursive = true;
-      };
+      "Templates/new".text = "";
 
-      "Templates/new.cfg" = {
-        text = "";
-        recursive = true;
-      };
+      "Templates/new.cfg".text = "";
 
-      "Templates/new.ini" = {
-        text = "";
-        recursive = true;
-      };
+      "Templates/new.ini".text = "";
 
-      "Templates/new.sh" = {
-        text = "";
-        recursive = true;
-      };
+      "Templates/new.sh".text = "";
 
-      "Templates/new.txt" = {
-        text = "";
-        recursive = true;
-      };
+      "Templates/new.txt".text = "";
 
       ".icons/default" = {
         source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";

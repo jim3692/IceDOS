@@ -4,6 +4,7 @@ POSITIONAL_ARGS=()
 
 FLAG_USE_ANY_NS=0
 FLAG_CREATE_NEW_NS=0
+FLAG_DETACH=0
 FLAG_USE_CONFIG_FILE=0
 
 while [[ $# -gt 0 ]]; do
@@ -14,6 +15,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     -n|--new)
       FLAG_CREATE_NEW_NS=1
+      shift
+      ;;
+    -d|--detach)
+      FLAG_DETACH=1
       shift
       ;;
     -c|--config-file)
@@ -128,6 +133,11 @@ _log EXISTING_NAMESPACES=$EXISTING_NAMESPACES
 if [ "$FLAG_CREATE_NEW_NS" -eq 1 ]; then
   create_namespace_interactive
 elif [ "`printf "$EXISTING_NAMESPACES" | wc -c`" -eq 0 ]; then
+  if [ "$FLAG_USE_ANY_NS" -eq 1 ]; then
+    echo "Could not a find an existing NS to enter" > /dev/stderr
+    exit 1
+  fi
+
   _log There are no Network namespaces available.
   _log Creating new one ...
 
@@ -142,7 +152,7 @@ else
   printf "Namespace number:"
   read number
 
-  if [ "$number" -eq "n" ]; then
+  if [ "$number" == "n" ]; then
     create_namespace_interactive
   else
     echo "Selected $number"
@@ -177,6 +187,10 @@ execute () {
     fi
   "
 }
+
+if [ "$FLAG_DETACH" -eq 1 ]; then
+  exit
+fi
 
 sudo bash -c "
   $(for x in $TO_EXPORT_ENV; do printf '%q=%q ' "$x" "${!x}"; done;)

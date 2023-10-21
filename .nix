@@ -18,7 +18,7 @@
         pwas.sites = mkOption {
           type = types.str;
           default =
-            "https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
+            "https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app https://dtekteam.slack.com/";
         };
       };
 
@@ -61,9 +61,28 @@
         default = false;
       };
 
-      efi-mount-path = mkOption {
-        type = types.str;
-        default = "/boot";
+      grub = {
+        enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        device = mkOption {
+          type = types.str;
+          default = "/dev/sda";
+        };
+      };
+
+      systemd-boot = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        efi-mount-path = mkOption {
+          type = types.str;
+          default = "/boot";
+        };
       };
 
       # Used for rebooting to windows with efibootmgr
@@ -158,16 +177,9 @@
         default = false;
       };
 
-      hyprland = {
-        enable = mkOption {
-          type = types.bool;
-          default = false;
-        };
-
-        dual-monitor.enable = mkOption {
-          type = types.bool;
-          default = true;
-        };
+      hyprland.enable = mkOption {
+        type = types.bool;
+        default = false;
       };
     };
 
@@ -257,6 +269,77 @@
         };
       };
 
+      monitors = {
+        main = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          name = mkOption {
+            type = types.str;
+            default = "DP-1";
+          };
+
+          resolution = mkOption {
+            type = types.str;
+            default = "1920x1080";
+          };
+
+          refresh-rate = mkOption {
+            type = types.str;
+            default = "144";
+          };
+
+          position = mkOption {
+            type = types.str;
+            default = "0x0";
+          };
+
+          scaling = mkOption {
+            type = types.str;
+            default = "1";
+          };
+        };
+
+        secondary = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          name = mkOption {
+            type = types.str;
+            default = "DP-2";
+          };
+
+          resolution = mkOption {
+            type = types.str;
+            default = "1280x1024";
+          };
+
+          refresh-rate = mkOption {
+            type = types.str;
+            default = "75";
+          };
+
+          position = mkOption {
+            type = types.str;
+            default = "1920x0";
+          };
+
+          scaling = mkOption {
+            type = types.str;
+            default = "1";
+          };
+        };
+      };
+
+      networking.hosts.enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+
       # Set to false if hardware/mounts.nix is not correctly configured
       mounts.enable = mkOption {
         type = types.bool;
@@ -303,6 +386,12 @@
     };
 
     system = {
+      # Location of the config
+      configuration-location = mkOption {
+        type = types.str;
+        default = builtins.readFile ./.configuration-location;
+      };
+
       gc = {
         # Number of days before a generation can be deleted
         days = mkOption {
@@ -315,6 +404,11 @@
           type = types.str;
           default = "10";
         };
+      };
+
+      update.stash-flake-lock = mkOption {
+        type = types.bool;
+        default = true;
       };
 
       user = {
@@ -350,7 +444,7 @@
         work = {
           enable = mkOption {
             type = types.bool;
-            default = false;
+            default = true;
           };
 
           username = mkOption {
