@@ -42,7 +42,7 @@ printf "$PWD" > .configuration-location
 echo "${TEMP_FILES[*]}" | xargs bash -c "hideFiles"
 
 # Build the configuration
-sudo nixos-rebuild switch --flake . --option eval-cache false
+sudo nixos-rebuild switch --impure --flake . --option eval-cache false
 
 # Remove added temp files after building the configuration
 echo "${TEMP_FILES[*]}" | xargs bash -c "removeFiles"
