@@ -83,6 +83,7 @@ let
     nixfmt # A nix formatter
     nodejs # Node package manager
     python3 # Python
+    rustc # Rust compiler
     vscodium # All purpose IDE
   ];
 

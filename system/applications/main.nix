@@ -27,6 +27,8 @@ let
   ];
 
   shellScripts = [ update ];
+
+  electronics = with pkgs; [ arduino pulseview savvycan ];
 in lib.mkIf config.system.user.main.enable {
   users.users.${config.system.user.main.username}.packages = with pkgs;
     [
@@ -35,8 +37,7 @@ in lib.mkIf config.system.user.main.enable {
       input-remapper # Remap input device controls
       scanmem # Cheat engine for linux
       stremio # Straming platform
-      update # Update the system configuration
-    ] ++ emulators ++ gaming ++ shellScripts;
+    ] ++ emulators ++ gaming ++ shellScripts ++ electronics;
 
   # Wayland microcompositor
   programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
