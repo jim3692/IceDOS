@@ -20,7 +20,6 @@
     };
 
     # Apps
-    hyprland.url = "github:hyprwm/Hyprland";
 
     phps = {
       url = "github:fossar/nix-phps";
@@ -55,7 +54,6 @@
       shell-in-netns,
       yuzu,
 
-      hyprland,
     }@inputs:
     {
       nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -87,9 +85,6 @@
           chaotic.nixosModules.default
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
-
-          hyprland.nixosModules.default
-          ./system/desktop/hyprland
         ];
       };
     };

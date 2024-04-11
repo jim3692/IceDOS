@@ -54,8 +54,6 @@ in
             "org/gnome/desktop/wm/preferences" = {
               # Buttons to show in titlebars
               button-layout = cfg.desktop.gnome.titlebarLayout;
-              # Disable application is ready notification
-              focus-new-windows = "strict";
               num-workspaces = cfg.desktop.gnome.workspaces.maxWorkspaces;
             };
 
@@ -116,14 +114,16 @@ in
                   "appindicatorsupport@rgcjonas.gmail.com"
                   "pano@elhan.io"
                   "quick-settings-tweaks@qwreey"
+                  "user-theme@gnome-shell-extensions.gcampax.github.com"
                 ]
                 ++ optional (cfg.desktop.gnome.extensions.arcmenu) "arcmenu@arcmenu.com"
                 ++ optional (cfg.desktop.gnome.extensions.dashToPanel) "dash-to-panel@jderose9.github.com"
                 ++ optional (cfg.desktop.gnome.extensions.gsconnect) "gsconnect@andyholmes.github.io";
 
               favorite-apps = mkIf (cfg.desktop.gnome.pinnedApps) [
-                "webstorm.desktop"
+                "steam.desktop"
                 "webcord.desktop"
+                "signal-desktop.desktop"
                 "firefox.desktop"
               ]; # Set dash to panel pinned apps
             };
@@ -209,15 +209,15 @@ in
               windows-disable-frequent-apps = true;
               windows-disable-pinned-apps = !cfg.desktop.gnome.pinnedApps;
               pinned-app-list = mkIf (cfg.desktop.gnome.pinnedApps) [
+                "Codium IDE"
+                ""
+                "codiumIDE.desktop"
                 "VSCodium"
                 ""
                 "codium.desktop"
                 "Spotify"
                 ""
                 "spotify.desktop"
-                "Signal"
-                ""
-                "signal-desktop.desktop"
                 "OBS Studio"
                 ""
                 "com.obsproject.Studio.desktop"

@@ -30,7 +30,7 @@ in
         ${username} = {
           gtk = {
             enable = true;
-            theme.name = "Adwaita-dark";
+            theme.name = "adw-gtk3-dark";
             cursorTheme.name = "Bibata-Modern-Classic";
             iconTheme.name = "Tela-black-dark";
           }; # Change GTK themes
@@ -73,31 +73,31 @@ in
               };
 
               # dbeaver on Xwayland (fix scaling issues)
-              dbeaver = mkIf (user == "work") {
-                exec = "env GDK_BACKEND=x11 dbeaver";
-                icon = "dbeaver";
-                name = "dbeaver - X11";
-                terminal = false;
-                type = "Application";
-              };
+              # dbeaver = mkIf (user == "work") {
+              #   exec = "env GDK_BACKEND=x11 dbeaver";
+              #   icon = "dbeaver";
+              #   name = "dbeaver - X11";
+              #   terminal = false;
+              #   type = "Application";
+              # };
 
               # Firefox PWA
-              pwas = {
-                exec = "firefox --no-remote -P PWAs --name pwas ${config.icedos.applications.firefox.pwas}";
-                icon = "firefox-nightly";
-                name = "Firefox PWAs";
-                terminal = false;
-                type = "Application";
-              };
+              # pwas = {
+              #   exec = "firefox --no-remote -P PWAs --name pwas ${config.icedos.applications.firefox.pwas}";
+              #   icon = "firefox-nightly";
+              #   name = "Firefox PWAs";
+              #   terminal = false;
+              #   type = "Application";
+              # };
 
               # Run signal without a tray icon
-              signal = {
-                exec = "signal-desktop --hide-tray-icon";
-                icon = "signal-desktop";
-                name = "Signal - No tray";
-                terminal = false;
-                type = "Application";
-              };
+              # signal = {
+              #   exec = "signal-desktop --hide-tray-icon";
+              #   icon = "signal-desktop";
+              #   name = "Signal - No tray";
+              #   terminal = false;
+              #   type = "Application";
+              # };
 
               # Force slack to use window decorations
               slack = mkIf (user == "work") {
@@ -121,14 +121,20 @@ in
                 "application/x-shellscript" = "codium.desktop";
                 "application/x-wine-extension-ini" = "codium.desktop";
                 "application/zip" = "org.gnome.FileRoller.desktop";
-                "image/avif" = "org.gnome.gThumb.desktop";
-                "image/jpeg" = "org.gnome.gThumb.desktop";
-                "image/png" = "org.gnome.gThumb.desktop";
-                "image/svg+xml" = "org.gnome.gThumb.desktop";
+                "audio/aac" = "io.bassi.Amberol.desktop";
+                "audio/flac" = "io.bassi.Amberol.desktop";
+                "audio/mp3" = "io.bassi.Amberol.desktop";
+                "audio/wav" = "io.bassi.Amberol.desktop";
+                "image/avif" = "org.gnome.Loupe.desktop";
+                "image/jpeg" = "org.gnome.Loupe.desktop";
+                "image/png" = "org.gnome.Loupe.desktop";
+                "image/svg+xml" = "org.gnome.Loupe.desktop";
                 "text/html" = "firefox.desktop";
                 "text/plain" = "codium.desktop";
                 "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
+                "video/quicktime" = "io.github.celluloid_player.Celluloid.desktop";
                 "video/x-matroska" = "io.github.celluloid_player.Celluloid.desktop";
+                "video/x-ms-wmv" = "io.github.celluloid_player.Celluloid.desktop";
                 "x-scheme-handler/about" = "firefox.desktop";
                 "x-scheme-handler/http" = "firefox.desktop";
                 "x-scheme-handler/https" = "firefox.desktop";

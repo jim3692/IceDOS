@@ -7,23 +7,23 @@
         firefox = {
           gnomeTheme = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
 
           overrides = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
 
           privacy = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
 
           # Sites to launch on Firefox PWAs
           pwas = mkOption {
             type = types.str;
-            default = "https://app.tuta.com https://icedborn.github.io/icedchat https://discord.com/app https://dtekteam.slack.com/ https://web.skype.com/";
+            default = "https://app.tuta.com https://icedborn.github.io/icedchat";
           };
         };
 
@@ -37,13 +37,13 @@
           adwaitaForSteam = {
             enable = mkOption {
               type = types.bool;
-              default = true;
+              default = false;
             };
 
             # https://github.com/tkashkin/Adwaita-for-Steam/tree/master/adwaita/extras
             extras = mkOption {
               type = types.str;
-              default = "-e library/hide_whats_new -e login/hover_qr -e windowcontrols/hide-close";
+              default = "-e library/hide_whats_new";
             };
           };
 
@@ -78,7 +78,7 @@
 
             decky = mkOption {
               type = types.bool;
-              default = true;
+              default = false;
             };
           };
         };
@@ -126,7 +126,7 @@
         autologin = {
           enable = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
 
           # If false, defaults to work user
@@ -151,23 +151,23 @@
         gnome = {
           enable = mkOption {
             type = types.bool;
-            default = false;
+            default = true;
           };
 
           extensions = {
             arcmenu = mkOption {
               type = types.bool;
-              default = false;
+              default = true;
             };
 
             dashToPanel = mkOption {
               type = types.bool;
-              default = false;
+              default = true;
             };
 
             gsconnect = mkOption {
               type = types.bool;
-              default = true;
+              default = false;
             };
           };
 
@@ -175,13 +175,13 @@
           clock = {
             date = mkOption {
               type = types.bool;
-              default = false;
+              default = true;
             };
 
             # Show the day of the week on the clock
             weekday = mkOption {
               type = types.bool;
-              default = false;
+              default = true;
             };
           };
 
@@ -193,7 +193,7 @@
           # Whether to set (or unset) gnome's and arcmenu's pinned apps
           pinnedApps = mkOption {
             type = types.bool;
-            default = false;
+            default = true;
           };
 
           powerButtonAction = mkOption {
@@ -203,19 +203,19 @@
 
           startupItems = mkOption {
             type = types.bool;
-            default = false;
+            default = true;
           };
 
           # Options: 'minimize', 'maximize', 'close', 'spacer'(adds space between buttons), ':'(left-center-right separator)
           titlebarLayout = mkOption {
             type = types.str;
-            default = "appmenu:close";
+            default = "appmenu:minimize,maximize,close";
           };
 
           workspaces = {
             dynamicWorkspaces = mkOption {
               type = types.bool;
-              default = true;
+              default = false;
             };
 
             # Determines the maximum number of workspaces when dynamic workspaces are disabled
@@ -229,7 +229,7 @@
         hyprland = {
           enable = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
 
           # Find backlight unit using brightnessctl
@@ -300,8 +300,8 @@
 
               value = mkOption {
                 type = types.str;
-                # Pstate 0, 1.175 voltage, 4000 clock speed
-                default = "-p 0 -v 3C -f A0";
+                # Pstate 0, 1.15 voltage, 4400 clock speed
+                default = "-p 0 -v 40 -f B0";
               };
             };
           };
@@ -358,17 +358,17 @@
 
             resolution = mkOption {
               type = types.str;
-              default = "1920x1080";
+              default = "3440x1440";
             };
 
             refreshRate = mkOption {
               type = types.str;
-              default = "144";
+              default = "120";
             };
 
             position = mkOption {
               type = types.str;
-              default = "1360x0";
+              default = "0x0";
             };
 
             scaling = mkOption {
@@ -390,12 +390,12 @@
 
             name = mkOption {
               type = types.str;
-              default = "HDMI-A-1";
+              default = "DP-2";
             };
 
             resolution = mkOption {
               type = types.str;
-              default = "1360x768";
+              default = "1920x1080";
             };
 
             refreshRate = mkOption {
@@ -405,7 +405,7 @@
 
             position = mkOption {
               type = types.str;
-              default = "0x0";
+              default = "3440x0";
             };
 
             scaling = mkOption {
@@ -422,7 +422,7 @@
           third = {
             enable = mkOption {
               type = types.bool;
-              default = true;
+              default = false;
             };
 
             name = mkOption {
@@ -513,7 +513,7 @@
           # Android container
           waydroid = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
         };
       };
@@ -528,13 +528,13 @@
           # Number of days before a generation can be deleted
           days = mkOption {
             type = types.str;
-            default = "0";
+            default = "7";
           };
 
           # Number of generations that will always be kept
           generations = mkOption {
             type = types.str;
-            default = "10";
+            default = "5";
           };
         };
 
@@ -550,7 +550,7 @@
 
         update.stash = mkOption {
           type = types.str;
-          default = "true";
+          default = "false";
         };
 
         user = {
@@ -562,12 +562,12 @@
 
             username = mkOption {
               type = types.str;
-              default = "icedborn";
+              default = "stef";
             };
 
             description = mkOption {
               type = types.str;
-              default = "IceDBorn";
+              default = "Stefanos";
             };
 
             applications = {
@@ -586,12 +586,12 @@
               git = {
                 username = mkOption {
                   type = types.str;
-                  default = "IceDBorn";
+                  default = "CrazyStevenz";
                 };
 
                 email = mkOption {
                   type = types.str;
-                  default = "git.outsider841@simplelogin.fr";
+                  default = "github.ekta@aleeas.com";
                 };
               };
 
@@ -606,7 +606,7 @@
                 lock = {
                   enable = mkOption {
                     type = types.bool;
-                    default = true;
+                    default = false;
                   };
 
                   seconds = mkOption {
@@ -630,7 +630,7 @@
                 suspend = {
                   enable = mkOption {
                     type = types.bool;
-                    default = true;
+                    default = false;
                   };
 
                   seconds = mkOption {
@@ -645,7 +645,7 @@
           work = {
             enable = mkOption {
               type = types.bool;
-              default = false;
+              default = true;
             };
 
             username = mkOption {
@@ -674,12 +674,12 @@
               git = {
                 username = mkOption {
                   type = types.str;
-                  default = "IceDBorn";
+                  default = "CrazyStevenz";
                 };
 
                 email = mkOption {
                   type = types.str;
-                  default = "git.outsider841@simplelogin.fr";
+                  default = "github.ekta@aleeas.com";
                 };
               };
 
@@ -699,7 +699,7 @@
 
                   seconds = mkOption {
                     type = types.str;
-                    default = "180";
+                    default = "270";
                   };
                 };
 
@@ -718,7 +718,7 @@
                 suspend = {
                   enable = mkOption {
                     type = types.bool;
-                    default = true;
+                    default = false;
                   };
 
                   seconds = mkOption {

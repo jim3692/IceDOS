@@ -45,46 +45,60 @@ let
   update-codium-extensions = import modules/codium-extension-updater.nix { inherit pkgs; };
 
   codingDeps = with pkgs; [
-    bruno # API explorer
+    # bruno # API explorer
     cargo # Rust package manager
-    dotnet-sdk_7 # SDK for .net
-    gcc # C++ compiler
-    gdtoolkit # Tools for gdscript
-    gnumake # A tool to control the generation of non-source files from sources
+    # dotnet-sdk_7 # SDK for .net
+    # gcc # C++ compiler
+    # gdtoolkit # Tools for gdscript
+    # gnumake # A tool to control the generation of non-source files from sources
     nixfmt-rfc-style # A nix formatter
-    nodejs # Node package manager
+    nodejs_18 # Node package manager
     python3 # Python
     vscodium # All purpose IDE
   ];
 
   # Packages to add for a fork of the config
-  myPackages = with pkgs; [ ];
+  myPackages = with pkgs; [
+    adw-gtk3 # Adds libadwaita support to GTK-3
+    amberol # A small and simple sound and music player
+    audacity # Sound editor with graphical UI
+    bun # Incredibly fast JavaScript runtime, bundler, transpiler and package manager
+    gradience # Customize libadwaita and GTK3 apps (with adw-gtk3)
+    gsound # Small library for playing system sounds (required to show file properties in Nautilus)
+    mullvad-vpn # The GUI client for mullvad
+    nextcloud-client # Nextcloud themed desktop client
+    pavucontrol # Sound manager
+    spotify # Music streaming service
+    stremio # Movie/Series/Anime streaming service
+    ungoogled-chromium # Chromium with dependencies on Google web services removed
+    webcord # An open source discord client
+  ];
 
   nvchadDeps = with pkgs; [
-    beautysh # Bash formatter
-    black # Python formatter
-    lazygit # Git CLI UI
-    libclang # C language server and formatter
-    lua-language-server # Lua language server
-    marksman # Markdown language server
-    neovim # Terminal text editor
-    nil # Nix language server
-    nodePackages.bash-language-server # Bash Language server
-    nodePackages.dockerfile-language-server-nodejs # Dockerfiles language server
-    nodePackages.eslint # An AST-based pattern checker for JavaScript
-    nodePackages.intelephense # PHP language server
-    nodePackages.prettier # Javascript/Typescript formatter
-    nodePackages.typescript-language-server # Typescript language server
-    nodePackages.vscode-langservers-extracted # HTML, CSS, Eslint, Json language servers
-    phpPackages.phpstan # PHP Static Analysis Tool
-    python3Packages.jedi-language-server # Python language server
-    ripgrep # Silver searcher grep
-    rust-analyzer # Rust language server
-    rustfmt # Rust formatter
-    shellcheck # Shell script analysis tool
-    stylua # Lua formatter
-    tailwindcss-language-server # Tailwind language server
-    tree-sitter # Parser generator tool and an incremental parsing library
+    # beautysh # Bash formatter
+    # black # Python formatter
+    # lazygit # Git CLI UI
+    # libclang # C language server and formatter
+    # lua-language-server # Lua language server
+    # marksman # Markdown language server
+    # neovim # Terminal text editor
+    # nil # Nix language server
+    # nodePackages.bash-language-server # Bash Language server
+    # nodePackages.dockerfile-language-server-nodejs # Dockerfiles language server
+    # nodePackages.eslint # An AST-based pattern checker for JavaScript
+    # nodePackages.intelephense # PHP language server
+    # nodePackages.prettier # Javascript/Typescript formatter
+    # nodePackages.typescript-language-server # Typescript language server
+    # nodePackages.vscode-langservers-extracted # HTML, CSS, Eslint, Json language servers
+    # phpPackages.phpstan # PHP Static Analysis Tool
+    # python3Packages.jedi-language-server # Python language server
+    # ripgrep # Silver searcher grep
+    # rust-analyzer # Rust language server
+    # rustfmt # Rust formatter
+    # shellcheck # Shell script analysis tool
+    # stylua # Lua formatter
+    # tailwindcss-language-server # Tailwind language server
+    # tree-sitter # Parser generator tool and an incremental parsing library
   ];
 
   packageOverrides = with pkgs; [
@@ -119,33 +133,33 @@ in
   environment.systemPackages =
     with pkgs;
     [
-      appimage-run # Appimage runner
-      aria # Terminal downloader with multiple connections support
-      bat # Better cat command
-      bless # HEX Editor
+      # appimage-run # Appimage runner
+      # aria # Terminal downloader with multiple connections support
+      # bat # Better cat command
+      # bless # HEX Editor
       btop # System monitor
       celluloid # Video player
       clamav # Antivirus
       curtail # Image compressor
-      easyeffects # Pipewire effects manager
+      # easyeffects # Pipewire effects manager
       efibootmgr # Edit EFI entries
-      endeavour # Tasks
+      # endeavour # Tasks
       fd # Find alternative
-      flowblade # Video editor
+      # flowblade # Video editor
       fragments # Bittorrent client following Gnome UI standards
       gimp # Image editor
       gping # ping with a graph
-      gthumb # Image viewer
+      # gthumb # Image viewer
       helvum # Pipewire patchbay
-      iotas # Notes
-      jc # JSON parser
+      # iotas # Notes
+      # jc # JSON parser
       jq # JSON parser
       killall # Tool to kill all programs matching process name
       kitty # Terminal
-      logseq # Note taking with nodes
+      # logseq # Note taking with nodes
       lsd # Better ls command
       mission-center # Task manager
-      moonlight-qt # Remote streaming
+      # moonlight-qt # Remote streaming
       mousai # Song recognizer
       ncdu # Terminal disk analyzer
       newsflash # RSS reader
@@ -155,13 +169,13 @@ in
       onlyoffice-bin # Microsoft Office alternative for Linux
       p7zip # 7zip
       pavucontrol # Sound manager
-      ranger # Terminal file manager
+      # ranger # Terminal file manager
       rnnoise-plugin # A real-time noise suppression plugin
       scrcpy # Remotely use android
       signal-desktop # Encrypted messaging platform
-      solaar # Logitech devices manager
-      sunshine # Remote desktop
-      tailscale # VPN with P2P support
+      # solaar # Logitech devices manager
+      # sunshine # Remote desktop
+      # tailscale # VPN with P2P support
       tmux # Terminal multiplexer
       trayscale # Tailscale GUI
       tree # Display folder content at a tree format
@@ -171,9 +185,9 @@ in
       wget # Terminal downloader
       wine # Compatibility layer capable of running Windows applications
       winetricks # Wine prefix settings manager
-      woeusb # Windows ISO Burner
+      # woeusb # Windows ISO Burner
       xorg.xhost # Use x.org server with docker
-      youtube-dl # Video downloader
+      # youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
     ]
     ++ codingDeps
@@ -182,6 +196,10 @@ in
     ++ packageOverrides
     ++ packageWraps
     ++ shellScripts;
+
+  environment.variables = {
+    PUPPETEER_EXECUTABLE_PATH = "${pkgs.ungoogled-chromium}/bin/chromium";
+  };
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
@@ -209,7 +227,7 @@ in
       shellAliases = {
         a2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
         bcompress = "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
-        cat = "bat"; # Better cat command
+        # cat = "bat"; # Better cat command
         cp = "rsync -rP"; # Copy command with details
         l-pkgs = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
         ls = "lsd"; # Better ls command
@@ -217,8 +235,8 @@ in
         n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
         ping = "gping"; # ping with a graph
         r-pipewire = "systemctl --user restart pipewire"; # Restart pipewire
-        r-store = "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
-        r-windows = "sudo efibootmgr --bootnext ${cfg.boot.windowsEntry} && reboot"; # Reboot to windows
+        # r-store = "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
+        # r-windows = "sudo efibootmgr --bootnext ${cfg.boot.windowsEntry} && reboot"; # Reboot to windows
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
         v = "nvim"; # Neovim
       };
@@ -255,6 +273,7 @@ in
 
   services = {
     clamav.updater.enable = true;
+    mullvad-vpn.enable = true;
     openssh.enable = true;
     tailscale.enable = true;
     fwupd.enable = true;

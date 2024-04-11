@@ -6,9 +6,12 @@
 # Install
 
 ```bash
-git clone https://github.com/IceDBorn/IceDOS
-cd IceDOS
-bash scripts/install.sh
+mkdir code
+cd code
+nix-shell -p git
+git clone https://github.com/CrazyStevenz/os
+cd os
+git checkout os
 ```
 
 # Preview

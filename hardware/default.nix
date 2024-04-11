@@ -49,6 +49,7 @@ in
     kernelParams =
       [
         "transparent_hugepage=always"
+        # Disables UMIP (User-Mode Instruction Protection)
         # Fixes certain wine games crash on launch
         "clearcpuid=514"
       ]
