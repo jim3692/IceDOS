@@ -30,7 +30,12 @@ in
         ${username} = {
           gtk = {
             enable = true;
-            theme.name = "adw-gtk3-dark";
+
+            theme = {
+              name = "adw-gtk3-dark";
+              package = pkgs.adw-gtk3;
+            };
+
             cursorTheme.name = "Bibata-Modern-Classic";
             iconTheme.name = "Tela-black-dark";
           }; # Change GTK themes
@@ -118,13 +123,9 @@ in
           home.file = {
             # New document options for nautilus
             "Templates/new".text = "";
-
             "Templates/new.cfg".text = "";
-
             "Templates/new.ini".text = "";
-
             "Templates/new.sh".text = "";
-
             "Templates/new.txt".text = "";
 
             ".icons/default" = {
