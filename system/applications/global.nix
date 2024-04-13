@@ -55,7 +55,6 @@ let
 
   # Packages to add for a fork of the config
   myPackages = with pkgs; [
-    adw-gtk3 # Adds libadwaita support to GTK-3
     amberol # A small and simple sound and music player
     audacity # Sound editor with graphical UI
     bun # Incredibly fast JavaScript runtime, bundler, transpiler and package manager
