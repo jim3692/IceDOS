@@ -35,11 +35,6 @@
       url = "github:jim3692/shell-in-netns";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    switch-emulators = {
-      url = "git+https:///codeberg.org/K900/yuzu-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -52,7 +47,6 @@
       phps,
       pipewire-screenaudio,
       shell-in-netns,
-      switch-emulators,
 
     }@inputs:
     {

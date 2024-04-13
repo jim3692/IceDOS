@@ -17,6 +17,11 @@ in
   options = with lib; {
     icedos = {
       applications = {
+        codium = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
         firefox = {
           enable = mkOption {
             type = types.bool;
@@ -81,6 +86,11 @@ in
               };
             };
           };
+        };
+
+        emulators.switch = mkOption {
+          type = types.bool;
+          default = false;
         };
       };
 

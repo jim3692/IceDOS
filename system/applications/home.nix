@@ -148,7 +148,7 @@ in
             };
 
             # Avoid file not found errors for bash
-            ".bashrc".text = "export EDITOR=codium";
+            ".bashrc".text = "";
           };
 
           # Set celluloid config file path

@@ -41,8 +41,6 @@ let
     builtins.readFile ../../scripts/trim-generations.sh
   );
 
-  update-codium-extensions = import modules/codium-extension-updater.nix { inherit pkgs; };
-
   codingDeps = with pkgs; [
     # bruno # API explorer
     cargo # Rust package manager
@@ -53,7 +51,6 @@ let
     nixfmt-rfc-style # A nix formatter
     nodejs_18 # Node package manager
     python3 # Python
-    vscodium # All purpose IDE
   ];
 
   # Packages to add for a fork of the config
@@ -85,7 +82,6 @@ let
     rebuild
     toggle-services
     trim-generations
-    update-codium-extensions
   ];
 in
 {
@@ -206,7 +202,6 @@ in
       # Commands to run on zsh shell initialization
       interactiveShellInit = ''
         source ~/.config/zsh/zsh-theme.zsh
-        export EDITOR=nvim
         unsetopt PROMPT_SP'';
     };
 
