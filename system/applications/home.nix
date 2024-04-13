@@ -133,21 +133,6 @@ in
                   '';
                 };
 
-            # Add nvchad
-            # ".config/nvim" = {
-            #   source = pkgs.nvchad;
-            #   recursive = true;
-            # };
-
-            # ".config/nvim/lua/custom/configs" = {
-            #   source = configs/nvchad/configs;
-            #   recursive = true;
-            # };
-
-            # ".config/nvim/lua/custom/chadrc.lua".source = configs/nvchad/chadrc.lua;
-            # ".config/nvim/lua/custom/mappings.lua".source = configs/nvchad/mappings.lua;
-            # ".config/nvim/lua/custom/plugins.lua".source = configs/nvchad/plugins.lua;
-
             # Add tmux
             ".config/tmux/tmux.conf".source = configs/tmux.conf;
 
