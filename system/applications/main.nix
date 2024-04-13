@@ -31,11 +31,6 @@ let
     type = "Wine";
   };
 
-  steam-library-patcher = import modules/steam-library-patcher.nix {
-    inherit pkgs;
-    steamPath = "/home/${username}/.local/share/Steam/steamui/css/";
-  };
-
   # Update the system configuration
   update = import modules/rebuild.nix {
     inherit pkgs config;
@@ -46,7 +41,7 @@ let
   emulators = with pkgs; [
     # cemu # Wii U
     # duckstation # PS1
-    # inputs.yuzu.packages.${pkgs.system}.early-access # Switch
+    # inputs.switch-emulators.packages.${pkgs.system}.suyu # Switch
     # pcsx2 # PS2
     # ppsspp # PSP
     # rpcs3 # PS3

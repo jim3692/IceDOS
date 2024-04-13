@@ -36,7 +36,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    yuzu = {
+    switch-emulators = {
       url = "git+https:///codeberg.org/K900/yuzu-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -52,7 +52,7 @@
       phps,
       pipewire-screenaudio,
       shell-in-netns,
-      yuzu,
+      switch-emulators,
 
     }@inputs:
     {

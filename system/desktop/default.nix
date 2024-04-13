@@ -23,16 +23,12 @@ in
   };
 
   services = {
-    displayManager.autoLogin = mkIf (cfg.desktop.autologin.enable) {
-      enable = true;
-      user =
-        if (cfg.system.user.main.enable && cfg.desktop.autologin.main.user.enable) then
-          cfg.system.user.main.username
-        else if (cfg.system.user.work.enable) then
-          cfg.system.user.work.username
-        else
-          "";
-    };
+    displayManager.autoLogin =
+      mkIf (cfg.desktop.autologin.enable && !cfg.applications.steam.session.autoStart.enable)
+        {
+          enable = true;
+          user = cfg.desktop.autologin.user;
+        };
 
     xserver = {
       enable = true; # Enable the X11 windowing system
@@ -83,8 +79,6 @@ in
     ];
 
     sessionVariables = {
-      # Set Firefox as default browser for Electron apps
-      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       # Fix nautilus not displaying audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
       GST_PLUGIN_SYSTEM_PATH_1_0 = makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
         with pkgs.gst_all_1;

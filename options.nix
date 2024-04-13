@@ -1,10 +1,28 @@
 { lib, ... }:
 
+let
+  users = {
+    main = {
+      username = "stef";
+      description = "Stefanos";
+    };
+
+    work = {
+      username = "work";
+      description = "Work";
+    };
+  };
+in
 {
   options = with lib; {
     icedos = {
       applications = {
         firefox = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
           overrides = mkOption {
             type = types.bool;
             default = false;
@@ -57,11 +75,6 @@
                 default = "hyprland";
               };
             };
-
-            decky = mkOption {
-              type = types.bool;
-              default = false;
-            };
           };
         };
       };
@@ -111,10 +124,9 @@
             default = false;
           };
 
-          # If false, defaults to work user
-          main.user.enable = mkOption {
-            type = types.bool;
-            default = true;
+          user = mkOption {
+            type = types.str;
+            default = users.main.username;
           };
         };
 
@@ -539,12 +551,12 @@
 
             username = mkOption {
               type = types.str;
-              default = "stef";
+              default = users.main.username;
             };
 
             description = mkOption {
               type = types.str;
-              default = "Stefanos";
+              default = users.main.description;
             };
 
             applications = {
@@ -627,12 +639,12 @@
 
             username = mkOption {
               type = types.str;
-              default = "work";
+              default = users.work.username;
             };
 
             description = mkOption {
               type = types.str;
-              default = "Work";
+              default = users.work.description;
             };
 
             applications = {
