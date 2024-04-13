@@ -24,7 +24,6 @@ let
     inherit pkgs config;
     command = "update";
     update = "true";
-    stash = cfg.update.stash;
   };
 
   # Packages to add for a fork of the config

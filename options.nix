@@ -5,11 +5,6 @@
     icedos = {
       applications = {
         firefox = {
-          gnomeTheme = mkOption {
-            type = types.bool;
-            default = false;
-          };
-
           overrides = mkOption {
             type = types.bool;
             default = false;
@@ -34,19 +29,6 @@
         };
 
         steam = {
-          adwaitaForSteam = {
-            enable = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            # https://github.com/tkashkin/Adwaita-for-Steam/tree/master/adwaita/extras
-            extras = mkOption {
-              type = types.str;
-              default = "-e library/hide_whats_new";
-            };
-          };
-
           beta = mkOption {
             type = types.bool;
             default = true;
@@ -546,11 +528,6 @@
         swappiness = mkOption {
           type = types.str;
           default = "1";
-        };
-
-        update.stash = mkOption {
-          type = types.str;
-          default = "false";
         };
 
         user = {

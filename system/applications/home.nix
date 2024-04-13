@@ -126,41 +126,8 @@ in
               force = true;
             };
 
-            # Install firefox gnome theme
-            ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" = mkIf (cfg.applications.firefox.gnomeTheme) {
-              source = pkgs.firefox-gnome-theme;
-              recursive = true;
-            };
-
-            # Import firefox gnome theme userChrome.css or disable WebRTC indicator
-            ".mozilla/firefox/privacy/chrome/userChrome.css".text =
-              if (cfg.applications.firefox.gnomeTheme) then
-                ''@import "firefox-gnome-theme/userChrome.css"''
-              else
-                "#webrtcIndicator { display: none }";
-
-            # Import firefox gnome theme userContent.css
-            ".mozilla/firefox/privacy/chrome/userContent.css".text =
-              if cfg.applications.firefox.gnomeTheme then
-                ''@import "firefox-gnome-theme/userContent.css"''
-              else
-                "";
-
-            ".mozilla/firefox/pwas/chrome" = {
-              source = pkgs.firefox-cascade;
-              recursive = true;
-            };
-
             # Add btop config
             ".config/btop/btop.conf".source = configs/btop.conf;
-
-            # Add adwaita steam skin
-            ".local/share/Steam/steamui" =
-              mkIf (user != "work" && cfg.applications.steam.adwaitaForSteam.enable)
-                {
-                  source = "${pkgs.adwaita-for-steam}/build";
-                  recursive = true;
-                };
 
             # Enable steam beta
             ".local/share/Steam/package/beta" = mkIf (user != "work" && cfg.applications.steam.beta) {
