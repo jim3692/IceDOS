@@ -174,7 +174,7 @@ in
       signal-desktop # Encrypted messaging platform
       # solaar # Logitech devices manager
       # sunshine # Remote desktop
-      # tailscale # VPN with P2P support
+      tailscale # VPN with P2P support
       tmux # Terminal multiplexer
       trayscale # Tailscale GUI
       tree # Display folder content at a tree format
