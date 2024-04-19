@@ -17,9 +17,40 @@ in
   options = with lib; {
     icedos = {
       applications = {
-        codium = mkOption {
-          type = types.bool;
-          default = true;
+        codium = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          extensions = mkOption {
+            type = types.str;
+            default = ''
+              "codezombiech.gitignore"
+              "dbaeumer.vscode-eslint"
+              "donjayamanne.githistory"
+              "eamodio.gitlens"
+              "editorconfig.editorconfig"
+              "esbenp.prettier-vscode"
+              "formulahendry.auto-close-tag"
+              "formulahendry.code-runner"
+              "gruntfuggly.todo-tree"
+              "jnoortheen.nix-ide"
+              "markwylde.vscode-filesize"
+              "ms-vscode.references-view"
+              "nico-castell.linux-desktop-file"
+              "paragdiwan.gitpatch"
+              "pkief.material-icon-theme"
+              "timonwong.shellcheck"
+              "zhuangtongfa.material-theme"
+              "ziyasal.vscode-open-in-github"
+            '';
+          };
+
+          zoomLevel = mkOption {
+            type = types.str;
+            default = "1";
+          };
         };
 
         firefox = {
@@ -342,7 +373,7 @@ in
           };
         };
 
-        laptop.enable = mkOption {
+        laptop = mkOption {
           type = types.bool;
           default = false;
         };
@@ -352,6 +383,11 @@ in
             enable = mkOption {
               type = types.bool;
               default = true;
+            };
+
+            deck = mkOption {
+              type = types.bool;
+              default = false;
             };
 
             name = mkOption {
@@ -391,6 +427,11 @@ in
               default = true;
             };
 
+            deck = mkOption {
+              type = types.bool;
+              default = false;
+            };
+
             name = mkOption {
               type = types.str;
               default = "DP-2";
@@ -424,6 +465,11 @@ in
 
           third = {
             enable = mkOption {
+              type = types.bool;
+              default = false;
+            };
+
+            deck = mkOption {
               type = types.bool;
               default = false;
             };
@@ -527,17 +573,24 @@ in
           default = "1.0.0";
         };
 
-        gc = {
-          # Number of days before a generation can be deleted
-          days = mkOption {
-            type = types.str;
-            default = "7";
+        generations = {
+          bootEntries = mkOption {
+            type = types.number;
+            default = 30;
           };
 
-          # Number of generations that will always be kept
-          generations = mkOption {
-            type = types.str;
-            default = "5";
+          garbageCollect = {
+            # Number of days before a generation can be deleted
+            days = mkOption {
+              type = types.str;
+              default = "7";
+            };
+
+            # Number of generations that will always be kept
+            generations = mkOption {
+              type = types.str;
+              default = "5";
+            };
           };
         };
 
@@ -570,6 +623,12 @@ in
 
             applications = {
               codium = {
+                # off, afterDelay, onFocusChange, onWindowChange
+                autoSave = mkOption {
+                  type = types.str;
+                  default = "onFocusChange";
+                };
+
                 formatOnSave = mkOption {
                   type = types.str;
                   default = "true";
@@ -706,6 +765,12 @@ in
 
             applications = {
               codium = {
+                # off, afterDelay, onFocusChange, onWindowChange
+                autoSave = mkOption {
+                  type = types.str;
+                  default = "onFocusChange";
+                };
+
                 formatOnSave = mkOption {
                   type = types.str;
                   default = "false";
