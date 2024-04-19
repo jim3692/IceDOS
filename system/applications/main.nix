@@ -54,7 +54,7 @@ let
   gaming = with pkgs; [
     # heroic # Epic Games Launcher for Linux
     # papermc # Minecraft server
-    # prismlauncher # Minecraft launcher
+    prismlauncher # Minecraft launcher
     protontricks # Winetricks for proton prefixes
     steamtinkerlaunch # General tweaks for games
   ];
