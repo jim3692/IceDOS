@@ -119,6 +119,11 @@ in
           };
         };
 
+        sunshine.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
         emulators.switch = mkOption {
           type = types.bool;
           default = false;
@@ -154,12 +159,6 @@ in
             type = types.str;
             default = "/boot";
           };
-        };
-
-        # Used for rebooting to windows with efibootmgr
-        windowsEntry = mkOption {
-          type = types.str;
-          default = "0000";
         };
       };
 
