@@ -152,7 +152,6 @@ in
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
   programs = {
-    adb.enable = true;
     direnv.enable = true;
 
     zsh = {
