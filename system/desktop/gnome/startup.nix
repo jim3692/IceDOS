@@ -49,18 +49,6 @@ in
               Type=Application
             '';
           };
-
-          ".config/autostart/slack.desktop" = mkIf (user == "work") {
-            text = ''
-              [Desktop Entry]
-              Exec=slack --enable-features=WaylandWindowDecorations
-              Icon=slack
-              Name=Slack
-              StartupWMClass=slack
-              Terminal=false
-              Type=Application
-            '';
-          };
         };
       }
     ) users;
