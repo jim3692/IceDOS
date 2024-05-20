@@ -77,7 +77,7 @@ in
           # Sites to launch on Firefox PWAs
           pwas = mkOption {
             type = types.str;
-            default = "https://app.tuta.com https://icedborn.github.io/icedchat";
+            default = "https://app.tuta.com https://develop.element.io";
           };
         };
 
