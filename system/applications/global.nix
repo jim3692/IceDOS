@@ -79,9 +79,10 @@ in
 {
   imports = [ configs/pipewire.nix ];
 
+  # TODO: Change back to linuxPackages_cachyos
   boot.kernelPackages = mkIf (
     !cfg.hardware.steamdeck && builtins.pathExists /etc/icedos-version
-  ) pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
+  ) pkgs.linuxPackages_6_8; # Use CachyOS optimized linux kernel
 
   environment.systemPackages =
     with pkgs;
