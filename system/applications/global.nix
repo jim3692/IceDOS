@@ -49,6 +49,7 @@ let
     amberol # A small and simple sound and music player
     audacity # Sound editor with graphical UI
     bun # Incredibly fast JavaScript runtime, bundler, transpiler and package manager
+    cypress
     gradience # Customize libadwaita and GTK3 apps (with adw-gtk3)
     gsound # Small library for playing system sounds (required to show file properties in Nautilus)
     mullvad-vpn # The GUI client for mullvad
@@ -58,6 +59,7 @@ let
     stremio # Movie/Series/Anime streaming service
     ungoogled-chromium # Chromium with dependencies on Google web services removed
     webcord # An open source discord client
+    yarn
   ];
 
   packageWraps = with pkgs; [
