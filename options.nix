@@ -22,6 +22,11 @@ in
           default = true;
         };
 
+        brave = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
         codium = {
           enable = mkOption {
             type = types.bool;
@@ -358,6 +363,11 @@ in
 
           nvidia = {
             enable = mkOption {
+              type = types.bool;
+              default = false;
+            };
+
+            beta = mkOption {
               type = types.bool;
               default = false;
             };
