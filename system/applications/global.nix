@@ -58,7 +58,7 @@ let
     spotify # Music streaming service
     stremio # Movie/Series/Anime streaming service
     ungoogled-chromium # Chromium with dependencies on Google web services removed
-    webcord # An open source discord client
+    vesktop # An open source discord client
     yarn
   ];
 
@@ -126,7 +126,7 @@ in
       rnnoise-plugin # A real-time noise suppression plugin
       scrcpy # Remotely use android
       signal-desktop # Encrypted messaging platform
-      # solaar # Logitech devices manager
+      solaar # Logitech devices manager
       tailscale # VPN with P2P support
       tmux # Terminal multiplexer
       trayscale # Tailscale GUI

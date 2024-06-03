@@ -713,7 +713,7 @@ in
                     type = with types; listOf str;
                     default = [
                       "steam.desktop"
-                      "webcord.desktop"
+                      "vesktop.desktop"
                       "signal-desktop.desktop"
                       "firefox.desktop"
                     ];
@@ -855,7 +855,7 @@ in
                     type = with types; listOf str;
                     default = [
                       "slack.desktop"
-                      "webcord.desktop"
+                      "vesktop.desktop"
                       "signal-desktop.desktop"
                       "firefox.desktop"
                       "webstorm.desktop"
