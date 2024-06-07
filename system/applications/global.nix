@@ -75,9 +75,23 @@ let
     toggle-services
     trim-generations
   ];
+
+  aagl-gtk-on-nix = import (
+    builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz"
+  );
 in
 {
-  imports = [ configs/pipewire.nix ];
+  imports = [
+    aagl-gtk-on-nix.module
+    configs/pipewire.nix
+  ];
+
+  # Enable Genshin Impact launcher
+  programs.anime-game-launcher.enable = true;
+  nix.settings = {
+    substituters = [ "https://ezkea.cachix.org" ];
+    trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
+  };
 
   # TODO: Change back to linuxPackages_cachyos
   boot.kernelPackages = mkIf (
