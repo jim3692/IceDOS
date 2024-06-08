@@ -1,0 +1,71 @@
+{
+	"icedos": {
+		"applications": {
+			"android-tools": true,
+			"brave": false,
+			"codium": {
+				"enable": true,
+				"extensions": [
+					"codezombiech.gitignore",
+					"dbaeumer.vscode-eslint",
+					"donjayamanne.githistory",
+					"eamodio.gitlens",
+					"editorconfig.editorconfig",
+					"esbenp.prettier-vscode",
+					"formulahendry.auto-close-tag",
+					"formulahendry.code-runner",
+					"gruntfuggly.todo-tree",
+					"jnoortheen.nix-ide",
+					"markwylde.vscode-filesize",
+					"ms-vscode.references-view",
+					"nico-castell.linux-desktop-file",
+					"paragdiwan.gitpatch",
+					"pkief.material-icon-theme",
+					"timonwong.shellcheck",
+					"zhuangtongfa.material-theme",
+					"ziyasal.vscode-open-in-github"
+				],
+				"zoomLevel": 1
+			},
+			"kitty": {
+				"hideDecorations": true
+			},
+			"firefox": {
+				"enable": true,
+				"overrides": false,
+				"privacy": false,
+				"pwas": [
+					"https://app.tuta.com",
+					"https://develop.element.io"
+				]
+			},
+			"librewolf": {
+				"enable": true,
+				"overrides": false,
+				"privacy": false,
+				"pwas": [
+					"https://app.tuta.com",
+					"https://develop.element.io",
+					"https://discord.com/app"
+				]
+			},
+			"nvchad": false,
+			"steam": {
+				"beta": true,
+				"downloadsWorkaround": true,
+				"session": {
+					"enable": false,
+					"autoStart": {
+						"enable": false,
+						"desktopSession": "hyprland"
+					}
+				}
+			},
+			"sunshine": false,
+			"emulators": {
+				"switch": false,
+				"wiiu": false
+			}
+		}
+	}
+}
