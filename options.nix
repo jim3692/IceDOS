@@ -63,6 +63,12 @@ in
           };
         };
 
+        # Hide kitty top bar
+        kitty.hideDecorations = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
         firefox = {
           enable = mkOption {
             type = types.bool;
@@ -86,10 +92,27 @@ in
           };
         };
 
-        # Hide kitty top bar
-        kitty.hideDecorations = mkOption {
-          type = types.bool;
-          default = true;
+        librewolf = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          overrides = mkOption {
+            type = types.bool;
+            default = false;
+          };
+
+          privacy = mkOption {
+            type = types.bool;
+            default = false;
+          };
+
+          # Sites to launch on Librewolf PWAs
+          pwas = mkOption {
+            type = types.str;
+            default = "https://app.tuta.com https://develop.element.io";
+          };
         };
 
         nvchad = mkOption {
@@ -134,9 +157,16 @@ in
           default = false;
         };
 
-        emulators.switch = mkOption {
-          type = types.bool;
-          default = false;
+        emulators = {
+          switch = mkOption {
+            type = types.bool;
+            default = false;
+          };
+
+          wiiu = mkOption {
+            type = types.bool;
+            default = false;
+          };
         };
       };
 
@@ -715,7 +745,8 @@ in
                       "steam.desktop"
                       "vesktop.desktop"
                       "signal-desktop.desktop"
-                      "firefox.desktop"
+                      "firefox.desktop" # TODO: Remove
+                      "librewolf.desktop"
                     ];
                   };
                 };
@@ -857,7 +888,8 @@ in
                       "slack.desktop"
                       "vesktop.desktop"
                       "signal-desktop.desktop"
-                      "firefox.desktop"
+                      "firefox.desktop" # TODO: Remove
+                      "librewolf.desktop"
                       "webstorm.desktop"
                     ];
                   };
