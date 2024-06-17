@@ -37,7 +37,7 @@ let
     cargo # Rust package manager
     # dotnet-sdk_7 # SDK for .net
     # gcc # C++ compiler
-    # gdtoolkit # Tools for gdscript
+    # gdtoolkit_4 # Tools for gdscript
     # gnumake # A tool to control the generation of non-source files from sources
     nixfmt-rfc-style # A nix formatter
     nodejs_18 # Node package manager
@@ -111,7 +111,6 @@ in
       efibootmgr # Edit EFI entries
       # endeavour # Tasks
       fd # Find alternative
-      # flowblade # Video editor
       fragments # Bittorrent client following Gnome UI standards
       gimp # Image editor
       gping # ping with a graph
@@ -135,6 +134,7 @@ in
       onlyoffice-bin # Microsoft Office alternative for Linux
       p7zip # 7zip
       pavucontrol # Sound manager
+      # pitivi # Video editor
       rnnoise-plugin # A real-time noise suppression plugin
       scrcpy # Remotely use android
       signal-desktop # Encrypted messaging platform
