@@ -11,7 +11,7 @@ let
   inherit (lib) mkIf;
 
   cfg = config.icedos.system;
-  username = cfg.user.work.username;
+  username = cfg.users.work.username;
 
   sail = import modules/run-command.nix {
     inherit pkgs;
@@ -70,7 +70,7 @@ let
     Alias /${storeAliases.bookmarkt.alias} ${gitLocation}${storeAliases.bookmarkt.folder}
   '';
 in
-mkIf (cfg.user.work.enable) {
+mkIf (cfg.users.work.enable) {
   users.users.${username}.packages =
     with pkgs;
     [

@@ -196,6 +196,148 @@
         "spiceUSBRedirection": true,
         "waydroid": false
       }
+    },
+    "system": {
+      "config": { "version": "1.0.0" },
+      "generations": {
+        "bootEntries": 30,
+        "garbageCollect": {
+          "days": 7,
+          "generations": 5
+        }
+      },
+      "home": "/home",
+      "swappiness": 1,
+      "users": {
+        "main": {
+          "enable": true,
+          "username": "stef",
+          "description": "Stefanos",
+          "applications": {
+            "codium": {
+              "autoSave": "onFocusChange",
+              "formatOnSave": true,
+              "formatOnPaste": false
+            },
+            "git": {
+              "username": "CrazyStevenz",
+              "email": "github.ekta@aleeas.com"
+            },
+            "nvchad": { "formatOnSave": true }
+          },
+          "desktop": {
+            "gnome": {
+              "pinnedApps": {
+                "arcmenu": {
+                  "enable": true,
+                  "list": [
+                    "Codium IDE",
+                    "",
+                    "codiumIDE.desktop",
+                    "VSCodium",
+                    "",
+                    "codium.desktop",
+                    "Mullvad VPN",
+                    "",
+                    "mullvad-vpn.desktop",
+                    "GNU Image Manipulation Program",
+                    "",
+                    "gimp.desktop"
+                  ]
+                },
+                "shell": {
+                  "enable": true,
+                  "list": [
+                    "steam.desktop",
+                    "vesktop.desktop",
+                    "signal-desktop.desktop",
+                    "librewolf.desktop"
+                  ]
+                }
+              }
+            },
+            "idle": {
+              "lock": {
+                "enable": false,
+                "seconds": 180
+              },
+              "disableMonitors": {
+                "enable": true,
+                "seconds": 300
+              },
+              "suspend": {
+                "enable": false,
+                "seconds": 900
+              }
+            }
+          }
+        },
+        "work": {
+          "enable": true,
+          "username": "work",
+          "description": "Work",
+          "applications": {
+            "codium": {
+              "autoSave": "onFocusChange",
+              "formatOnSave": true,
+              "formatOnPaste": false
+            },
+            "git": {
+              "username": "CrazyStevenz",
+              "email": "github.ekta@aleeas.com"
+            },
+            "nvchad": { "formatOnSave": false }
+          },
+          "desktop": {
+            "gnome": {
+              "pinnedApps": {
+                "arcmenu": {
+                  "enable": true,
+                  "list": [
+                    "Codium IDE",
+                    "",
+                    "codiumIDE.desktop",
+                    "VSCodium",
+                    "",
+                    "codium.desktop",
+                    "Mullvad VPN",
+                    "",
+                    "mullvad-vpn.desktop",
+                    "GNU Image Manipulation Program",
+                    "",
+                    "gimp.desktop"
+                  ]
+                },
+                "shell": {
+                  "enable": true,
+                  "list": [
+                    "slack.desktop",
+                    "vesktop.desktop",
+                    "signal-desktop.desktop",
+                    "librewolf.desktop",
+                    "webstorm.desktop"
+                  ]
+                }
+              }
+            },
+            "idle": {
+              "lock": {
+                "enable": true,
+                "seconds": 270
+              },
+              "disableMonitors": {
+                "enable": true,
+                "seconds": 300
+              },
+              "suspend": {
+                "enable": false,
+                "seconds": 900
+              }
+            }
+          }
+        }
+      },
+      "version": "23.05"
     }
   }
 }
