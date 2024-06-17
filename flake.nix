@@ -35,6 +35,7 @@
       url = "github:jim3692/shell-in-netns";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =
@@ -79,6 +80,7 @@
           chaotic.nixosModules.default
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
+
         ];
       };
     };

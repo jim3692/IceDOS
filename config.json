@@ -77,6 +77,46 @@
         "enable": true,
         "mountPoint": "/boot"
       }
+    },
+    "desktop": {
+      "autologin": {
+        "enable": false,
+        "user": "stef"
+      },
+      "gdm": {
+        "enable": true,
+        "autoSuspend": true
+      },
+      "gnome": {
+        "enable": true,
+        "extensions": {
+          "arcmenu": true,
+          "dashToPanel": true,
+          "gsconnect": false
+        },
+        "clock": {
+          "date": true,
+          "weekday": true
+        },
+        "hotCorners": false,
+        "powerButtonAction": "interactive",
+        "startupItems": true,
+        "titlebarLayout": "appmenu:minimize,maximize,close",
+        "workspaces": {
+          "dynamicWorkspaces": false,
+          "maxWorkspaces": 1
+        }
+      },
+      "hyprland": {
+        "enable": false,
+        "backlight": "amdgpu_bl0",
+        "lock": {
+          "secondsToLowerBrightness": 60,
+          "cpuUsageThreshold": 60,
+          "diskUsageThreshold": 10,
+          "networkUsageThreshold": 1000000
+        }
+      }
     }
   }
 }
