@@ -92,7 +92,7 @@ in
   };
 
   boot.kernelPackages = mkIf (
-    !cfg.hardware.steamdeck && builtins.pathExists /etc/icedos-version
+    !cfg.hardware.devices.steamdeck && builtins.pathExists /etc/icedos-version
   ) pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
 
   environment.systemPackages =
