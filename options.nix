@@ -336,5 +336,5 @@
     };
   };
 
-  config = builtins.fromJSON (lib.fileContents ./config.json);
+  config = builtins.fromTOML (lib.fileContents ./config.toml);
 }
