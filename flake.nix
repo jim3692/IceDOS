@@ -81,6 +81,9 @@
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
 
+          ./system/applications/users/main
+          ./system/applications/users/work
+
         ];
       };
     };
