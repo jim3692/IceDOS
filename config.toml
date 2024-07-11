@@ -293,12 +293,13 @@ list = [
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
 [icedos.system.users.work.desktop.gnome.pinnedApps.shell]
-enable = false
+enable = true
 list = [
-  "steam.desktop",
-  "webcord.desktop",
+  "slack.desktop",
+  "vesktop.desktop",
   "signal-desktop.desktop",
   "librewolf.desktop",
+  "webstorm.desktop",
 ]
 
 [icedos.system.users.work.desktop.idle.lock]
