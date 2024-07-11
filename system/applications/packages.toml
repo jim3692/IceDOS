@@ -18,7 +18,6 @@ packages = [
   "mullvad-vpn", # The GUI client for mullvad
   "nextcloud-client", # Nextcloud themed desktop client
   "spotify", # Music streaming service
-  "stremio", # Movie/Series/Anime streaming service
   "ungoogled-chromium", # Chromium with dependencies on Google web services removed
   "vesktop", # An open source discord client
 
@@ -64,10 +63,10 @@ packages = [
   "solaar", # Logitech devices manager
   "tailscale", # VPN with P2P support
   # "tmux", # Terminal multiplexer
-  "trayscale", # Tailscale GUI
+  # "trayscale", # Tailscale GUI
   # "tree", # Display folder content at a tree format
   "unrar", # Support opening rar files
-  # "unzip", # An extraction utility
+  "unzip", # An extraction utility
   # "warp", # File sync
   "wget", # Terminal downloader
   "wine", # Compatibility layer capable of running Windows applications
