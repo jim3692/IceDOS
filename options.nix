@@ -20,13 +20,6 @@
 
         kitty.hideDecorations = mkOption { type = types.bool; };
 
-        firefox = {
-          enable = mkOption { type = types.bool; };
-          overrides = mkOption { type = types.bool; };
-          privacy = mkOption { type = types.bool; };
-          pwas = mkOption { type = with types; listOf str; };
-        };
-
         librewolf = {
           enable = mkOption { type = types.bool; };
           overrides = mkOption { type = types.bool; };

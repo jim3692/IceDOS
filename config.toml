@@ -37,12 +37,6 @@ wiiu = false
 [icedos.applications.kitty]
 hideDecorations = true # Hide top bar
 
-[icedos.applications.firefox]
-enable = true
-overrides = false
-privacy = false
-pwas = []
-
 [icedos.applications.librewolf]
 enable = true
 overrides = false
