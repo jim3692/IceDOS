@@ -30,6 +30,10 @@ extensions = [
 ]
 zoomLevel = 1
 
+[icedos.applications.emulators]
+switch = false
+wiiu = false
+
 [icedos.applications.kitty]
 hideDecorations = true # Hide top bar
 
@@ -62,9 +66,8 @@ enable = false
 enable = false
 desktopSession = "hyprland"
 
-[icedos.applications.emulators]
-switch = false
-wiiu = false
+[icedos.applications.valent]
+deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.bootloader]
 animation = false # Hides linux kernel logs and displays a loading interface based on OEM
@@ -100,12 +103,12 @@ dashToPanel = true
 gsconnect = false
 
 [icedos.desktop.gnome.clock]
-date = true    # Show the month and day of the month on the clock
-weekday = true # Show the day of the week on the clock
+date = false # Show the month and day of the month on the clock
+weekday = false # Show the day of the week on the clock
 
 [icedos.desktop.gnome.workspaces]
 dynamicWorkspaces = true
-maxWorkspaces = 1        # Determines the maximum number of workspaces when dynamic workspaces are disabled
+maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic workspaces are disabled
 
 [icedos.desktop.hyprland]
 enable = false
@@ -113,8 +116,8 @@ backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
 
 [icedos.desktop.hyprland.lock]
 secondsToLowerBrightness = 60
-cpuUsageThreshold = 60            # CPU usage to inhibit lock in percentage
-diskUsageThreshold = 10           # Disk usage to inhibit lock in MB/s
+cpuUsageThreshold = 60 # CPU usage to inhibit lock in percentage
+diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
 networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
@@ -123,7 +126,7 @@ mounts = true # Set to false if hardware/mounts.nix is not correctly configured
 [icedos.hardware.btrfs.compression]
 enable = true
 mounts = true # Use btrfs compression for mounted drives
-root = true   # Use btrfs compression for / (root)
+root = true # Use btrfs compression for / (root)
 
 [icedos.hardware.cpus]
 intel = false
@@ -186,11 +189,11 @@ hosts = false
 ipv6 = false
 
 [icedos.hardware.virtualisation]
-docker = true              # Container manager
-libvirtd = true            # A daemon that manages virtual machines
-lxd = true                 # Container daemon
+docker = true # Container manager
+libvirtd = true # A daemon that manages virtual machines
+lxd = true # Container daemon
 spiceUSBRedirection = true # Passthrough USB devices to vms
-waydroid = true            # Android container
+waydroid = true # Android container
 
 [icedos.system]
 home = "/home"
@@ -204,7 +207,7 @@ version = "1.0.0"
 bootEntries = 30
 
 [icedos.system.generations.garbageCollect]
-days = 7        # Number of days before a generation can be deleted
+days = 7 # Number of days before a generation can be deleted
 generations = 5 # Number of generations that will always be kept
 
 [icedos.system.users.main]

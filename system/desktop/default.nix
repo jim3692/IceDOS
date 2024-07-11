@@ -6,12 +6,15 @@
 }:
 
 let
-  inherit (lib) makeSearchPathOutput mkIf;
+  inherit (lib) mkIf;
 
   cfg = config.icedos;
 in
 {
-  imports = [ ./home.nix ]; # Setup home manager
+  imports = [
+    ../applications/modules/nautilus.nix
+    ./home.nix # Setup home manager
+  ];
 
   # Set your time zone
   time.timeZone = "Europe/Bucharest";
@@ -71,24 +74,12 @@ in
   environment = {
     # Packages to install for all window manager/desktop environments
     systemPackages = with pkgs; [
-      bibata-cursors # Material cursors
       adwaita-icon-theme # GTK theme
+      bibata-cursors # Material cursors
+      dconf-editor # Edit gnome's dconf
       libnotify # Send desktop notifications
       tela-icon-theme # Icon theme
     ];
-
-    sessionVariables = {
-      # Fix nautilus not displaying audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
-      GST_PLUGIN_SYSTEM_PATH_1_0 = makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
-        with pkgs.gst_all_1;
-        [
-          gst-plugins-good
-          gst-plugins-bad
-          gst-plugins-ugly
-          gst-libav
-        ]
-      ); # Fix from https://github.com/NixOS/nixpkgs/issues/195936#issuecomment-1366902737
-    };
   };
 
   fonts.packages = with pkgs; [

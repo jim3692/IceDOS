@@ -17,7 +17,6 @@ packages = [
   "gsound", # Small library for playing system sounds (required to show file properties in Nautilus)
   "mullvad-vpn", # The GUI client for mullvad
   "nextcloud-client", # Nextcloud themed desktop client
-  "pavucontrol", # Sound manager
   "spotify", # Music streaming service
   "stremio", # Movie/Series/Anime streaming service
   "ungoogled-chromium", # Chromium with dependencies on Google web services removed
