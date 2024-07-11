@@ -229,17 +229,7 @@ formatOnSave = true
 
 [icedos.system.users.main.desktop.gnome.pinnedApps.arcmenu]
 enable = true
-list = [
-  "Codium IDE",
-  "",
-  "codiumIDE.desktop",
-  "VSCodium",
-  "",
-  "codium.desktop",
-  "Mullvad VPN",
-  "",
-  "mullvad-vpn.desktop",
-]
+list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
 [icedos.system.users.main.desktop.gnome.pinnedApps.shell]
@@ -282,17 +272,7 @@ formatOnSave = false
 
 [icedos.system.users.work.desktop.gnome.pinnedApps.arcmenu]
 enable = true
-list = [
-  "Codium IDE",
-  "",
-  "codiumIDE.desktop",
-  "VSCodium",
-  "",
-  "codium.desktop",
-  "Mullvad VPN",
-  "",
-  "mullvad-vpn.desktop",
-]
+list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
 [icedos.system.users.work.desktop.gnome.pinnedApps.shell]
