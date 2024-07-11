@@ -103,8 +103,8 @@ dashToPanel = true
 gsconnect = false
 
 [icedos.desktop.gnome.clock]
-date = false # Show the month and day of the month on the clock
-weekday = false # Show the day of the week on the clock
+date = true # Show the month and day of the month on the clock
+weekday = true # Show the day of the week on the clock
 
 [icedos.desktop.gnome.workspaces]
 dynamicWorkspaces = true
