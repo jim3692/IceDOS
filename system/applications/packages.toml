@@ -27,7 +27,6 @@ packages = [
   # "bless", # HEX Editor
   "btop", # CLI system monitor
   "celluloid", # Video player
-  "clamav", # Antivirus
   # "curtail", # Image compressor
   # "duf", # Disk usage utility
   # "easyeffects", # Pipewire effects manager
@@ -74,6 +73,5 @@ packages = [
   # "woeusb", # Windows ISO Burner
   "xorg.xhost", # Use x.org server with docker
   # "yazi", # Terminal file manager
-  # "youtube-dl", # Video downloader
   "zenstates", # Ryzen CPU controller
 ]

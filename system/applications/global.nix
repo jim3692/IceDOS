@@ -63,8 +63,20 @@ let
   );
 in
 {
-  # Enable Genshin Impact launcher
-  imports = [ aagl-gtk-on-nix.module ];
+  imports = [
+    ./modules/android-tools.nix
+    ./modules/brave.nix
+    ./modules/clamav.nix
+    ./modules/codium
+    ./modules/gamemode.nix
+    ./modules/librewolf
+    ./modules/nvchad
+    ./modules/sunshine.nix
+
+    # Enable Genshin Impact launcher
+    aagl-gtk-on-nix.module
+  ];
+
   programs.anime-game-launcher.enable = true;
   nix.settings = {
     substituters = [ "https://ezkea.cachix.org" ];
@@ -129,7 +141,6 @@ in
   };
 
   services = {
-    clamav.updater.enable = true;
     mullvad-vpn.enable = true;
     openssh.enable = true;
     tailscale.enable = true;
