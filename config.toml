@@ -223,7 +223,14 @@ formatOnSave = true
 
 [icedos.system.users.main.desktop.gnome.pinnedApps.arcmenu]
 enable = true
-list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
+list = [
+  "codiumIDE.desktop",
+  "codium.desktop",
+  "mullvad-vpn.desktop",
+  "org.nicotine_plus.Nicotine.desktop",
+  "spek.desktop",
+  "io.missioncenter.MissionCenter.desktop",
+]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
 [icedos.system.users.main.desktop.gnome.pinnedApps.shell]
