@@ -22,7 +22,6 @@ packages = [
   "vesktop", # An open source discord client
 
   # "appimage-run", # Appimage runner
-  # "aria", # Terminal downloader with multiple connections support
   # "bat", # Better cat command
   # "bless", # HEX Editor
   "btop", # CLI system monitor
