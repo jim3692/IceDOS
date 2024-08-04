@@ -71,8 +71,11 @@ in
     ./modules/codium
     ./modules/gamemode.nix
     ./modules/librewolf
+    ./modules/libvirtd.nix
     ./modules/nvchad
+    ./modules/podman.nix
     ./modules/sunshine.nix
+    ./modules/waydroid.nix
 
     # Enable Genshin Impact launcher
     aagl-gtk-on-nix.module
