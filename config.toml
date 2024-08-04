@@ -51,6 +51,7 @@ pwas = [
 ] # Sites to launch on Librewolf PWAs
 
 [icedos.applications.steam]
+enable = true
 beta = true
 downloadsWorkaround = true
 
@@ -137,6 +138,13 @@ value = "-p 0 -v 40 -f B0" # Pstate 0, 1.15 voltage, 4400 clock speed
 laptop = false
 steamdeck = false
 
+[icedos.hardware.devices.server]
+enable = false
+dns = "9.9.9.9"
+gateway = "192.168.1.1"
+interface = "eno1"
+ip = "192.168.1.2"
+
 [icedos.hardware.gpus]
 amd = true
 
@@ -195,8 +203,11 @@ ipv6 = false
 
 [icedos.hardware.virtualisation]
 libvirtd = true # A daemon that manages virtual machines
-podman = true # Container manager
 waydroid = true # Android container
+
+[icedos.hardware.containerManager]
+enable = true
+usePodman = false
 
 [icedos.system]
 home = "/home"
@@ -305,4 +316,47 @@ seconds = 300
 
 [icedos.system.users.work.desktop.idle.suspend]
 enable = false
+seconds = 900
+
+[icedos.system.users.server]
+enable = false
+username = "server"
+description = "Server"
+
+[icedos.system.users.server.applications.codium]
+autoSave = "off" # off, afterDelay, onFocusChange, onWindowChange
+formatOnSave = true
+formatOnPaste = true
+
+[icedos.system.users.server.applications.git]
+username = "IceDBorn"
+email = "git.outsider841@simplelogin.fr"
+
+[icedos.system.users.server.applications.nvchad]
+formatOnSave = true
+
+[icedos.system.users.server.desktop.gnome.pinnedApps.arcmenu]
+enable = false
+list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
+
+# Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
+[icedos.system.users.server.desktop.gnome.pinnedApps.shell]
+enable = false
+list = [
+  "steam.desktop",
+  "webcord.desktop",
+  "signal-desktop.desktop",
+  "librewolf.desktop",
+]
+
+[icedos.system.users.server.desktop.idle.lock]
+enable = true
+seconds = 180
+
+[icedos.system.users.server.desktop.idle.disableMonitors]
+enable = true
+seconds = 300
+
+[icedos.system.users.server.desktop.idle.suspend]
+enable = true
 seconds = 900

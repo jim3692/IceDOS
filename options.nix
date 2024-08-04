@@ -31,6 +31,7 @@
         nvchad = mkOption { type = types.bool; };
 
         steam = {
+          enable = mkOption { type = types.bool; };
           beta = mkOption { type = types.bool; };
           downloadsWorkaround = mkOption { type = types.bool; };
 
@@ -137,6 +138,15 @@
 
         devices = {
           laptop = mkOption { type = types.bool; };
+
+          server = {
+            enable = mkOption { type = types.bool; };
+            dns = mkOption { type = types.str; };
+            gateway = mkOption { type = types.str; };
+            interface = mkOption { type = types.str; };
+            ip = mkOption { type = types.str; };
+          };
+
           steamdeck = mkOption { type = types.bool; };
         };
 
@@ -209,8 +219,12 @@
         mounts = mkOption { type = types.bool; };
 
         virtualisation = {
+          containerManager = {
+            enable = mkOption { type = types.bool; };
+            usePodman = mkOption { type = types.str; };
+          };
+
           libvirtd = mkOption { type = types.bool; };
-          podman = mkOption { type = types.bool; };
           waydroid = mkOption { type = types.bool; };
         };
       };
@@ -259,6 +273,57 @@
                   list = mkOption { type = with types; listOf str; };
                 };
 
+                shell = {
+                  enable = mkOption { type = types.bool; };
+                  list = mkOption { type = with types; listOf str; };
+                };
+              };
+
+              idle = {
+                lock = {
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
+                };
+
+                disableMonitors = {
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
+                };
+
+                suspend = {
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
+                };
+              };
+            };
+          };
+
+          server = {
+            enable = mkOption { type = types.bool; };
+            username = mkOption { type = types.str; };
+            description = mkOption { type = types.str; };
+
+            applications = {
+              codium = {
+                autoSave = mkOption { type = types.str; };
+                formatOnSave = mkOption { type = types.bool; };
+                formatOnPaste = mkOption { type = types.bool; };
+              };
+
+              git = {
+                username = mkOption { type = types.str; };
+                email = mkOption { type = types.str; };
+              };
+
+              nvchad.formatOnSave = mkOption { type = types.bool; };
+            };
+
+            desktop = {
+              gnome.pinnedApps = {
+                arcmenu = {
+                  enable = mkOption { type = types.bool; };
+                  list = mkOption { type = with types; listOf str; };
+                };
                 shell = {
                   enable = mkOption { type = types.bool; };
                   list = mkOption { type = with types; listOf str; };
