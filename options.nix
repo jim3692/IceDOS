@@ -6,6 +6,7 @@
       applications = {
         android-tools = mkOption { type = types.bool; };
         brave = mkOption { type = types.bool; };
+        celluloid = mkOption { type = types.bool; };
         clamav = mkOption { type = types.bool; }; # Antivirus
 
         codium = {
@@ -19,7 +20,12 @@
           wiiu = mkOption { type = types.bool; };
         };
 
-        kitty.hideDecorations = mkOption { type = types.bool; };
+        kitty = {
+          enable = mkOption { type = types.bool; };
+          hideDecorations = mkOption { type = types.bool; };
+        };
+
+        mangohud = mkOption { type = types.bool; };
 
         librewolf = {
           enable = mkOption { type = types.bool; };
@@ -217,16 +223,6 @@
         };
 
         mounts = mkOption { type = types.bool; };
-
-        virtualisation = {
-          containerManager = {
-            enable = mkOption { type = types.bool; };
-            usePodman = mkOption { type = types.bool; };
-          };
-
-          libvirtd = mkOption { type = types.bool; };
-          waydroid = mkOption { type = types.bool; };
-        };
       };
 
       system = {
@@ -399,6 +395,16 @@
               };
             };
           };
+        };
+
+        virtualisation = {
+          containerManager = {
+            enable = mkOption { type = types.bool; };
+            usePodman = mkOption { type = types.bool; };
+          };
+
+          libvirtd = mkOption { type = types.bool; };
+          waydroid = mkOption { type = types.bool; };
         };
 
         version = mkOption { type = types.str; };

@@ -25,7 +25,6 @@ packages = [
   # "bat", # Better cat command
   # "bless", # HEX Editor
   "btop", # CLI system monitor
-  "celluloid", # Video player
   # "curtail", # Image compressor
   # "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries
@@ -39,7 +38,6 @@ packages = [
   # "jc", # JSON parser
   "jq", # JSON parser
   "killall", # Tool to kill all programs matching process name
-  "kitty", # Terminal emulator
   "lsd", # Better ls command
   "mission-center", # Task manager
   # "moonlight-qt", # Remote streaming client
