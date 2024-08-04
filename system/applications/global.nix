@@ -13,6 +13,7 @@ let
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
   pkgFile = lib.importTOML ./packages.toml;
+  myPackages = (pkgMapper pkgFile.myPackages);
 
   cfg = config.icedos;
 
@@ -61,12 +62,16 @@ in
   imports = [
     ./modules/android-tools.nix
     ./modules/aria2c.nix
+    ./modules/bash.nix
     ./modules/brave.nix
-    ./modules/celluloid.nix
+    ./modules/btop
+    ./modules/celluloid
     ./modules/clamav.nix
     ./modules/codium
     ./modules/container-manager.nix
     ./modules/gamemode.nix
+    ./modules/gdm.nix
+    ./modules/git.nix
     ./modules/kitty.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
@@ -74,8 +79,10 @@ in
     ./modules/nvchad
     ./modules/steam.nix
     ./modules/sunshine.nix
+    ./modules/tailscale.nix
+    ./modules/tmux
     ./modules/waydroid.nix
-    ./modules/zsh.nix
+    ./modules/zsh
 
     # Enable Genshin Impact launcher
     aagl-gtk-on-nix.module
@@ -103,7 +110,7 @@ in
       pkgs.linuxPackages_zen;
 
   environment.systemPackages =
-    (pkgMapper pkgFile.packages) ++ codingDeps ++ packageWraps ++ shellScripts;
+    (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ packageWraps ++ shellScripts;
 
   environment.variables = {
     PUPPETEER_EXECUTABLE_PATH = "${pkgs.ungoogled-chromium}/bin/chromium";
@@ -116,7 +123,6 @@ in
   services = {
     mullvad-vpn.enable = true;
     openssh.enable = true;
-    tailscale.enable = true;
     fwupd.enable = true;
     udev.packages = with pkgs; [
       logitech-udev-rules # Needed for solaar to work

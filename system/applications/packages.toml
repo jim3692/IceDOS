@@ -1,3 +1,15 @@
+myPackages = [
+  "amberol", # A small and simple sound and music player
+  "audacity", # Sound editor with graphical UI
+  "bun", # Incredibly fast JavaScript runtime, bundler, transpiler and package manager
+  "gsound", # Small library for playing system sounds (required to show file properties in Nautilus)
+  "mullvad-vpn", # The GUI client for mullvad
+  "nextcloud-client", # Nextcloud themed desktop client
+  "spotify", # Music streaming service
+  "ungoogled-chromium", # Chromium with dependencies on Google web services removed
+  "vesktop", # An open source discord client
+]
+
 codingDeps = [
   # "bruno", # API explorer
   # "cargo", # Rust package manager
@@ -11,20 +23,9 @@ codingDeps = [
 ]
 
 packages = [
-  "amberol", # A small and simple sound and music player
-  "audacity", # Sound editor with graphical UI
-  "bun", # Incredibly fast JavaScript runtime, bundler, transpiler and package manager
-  "gsound", # Small library for playing system sounds (required to show file properties in Nautilus)
-  "mullvad-vpn", # The GUI client for mullvad
-  "nextcloud-client", # Nextcloud themed desktop client
-  "spotify", # Music streaming service
-  "ungoogled-chromium", # Chromium with dependencies on Google web services removed
-  "vesktop", # An open source discord client
-
   # "appimage-run", # Appimage runner
   # "bat", # Better cat command
   # "bless", # HEX Editor
-  "btop", # CLI system monitor
   # "curtail", # Image compressor
   # "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries
@@ -55,9 +56,6 @@ packages = [
   "scrcpy", # Remotely use android
   "signal-desktop", # Encrypted messaging platform
   "solaar", # Logitech devices manager
-  "tailscale", # VPN with P2P support
-  # "tmux", # Terminal multiplexer
-  # "trayscale", # Tailscale GUI
   # "tree", # Display folder content at a tree format
   "unrar", # Support opening rar files
   "unzip", # An extraction utility

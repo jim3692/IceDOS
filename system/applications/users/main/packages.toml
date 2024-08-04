@@ -1,3 +1,9 @@
+myPackages = [
+  "flac", # Library and tools for encoding and decoding the FLAC lossless audio file format
+  "nicotine-plus", # p2p music sharing platform
+  "spek", # Audio file spectrogram analysis
+]
+
 emulators = [
   # "duckstation", # PS1
   # "pcsx2", # PS2
@@ -15,10 +21,6 @@ gaming = [
 ]
 
 packages = [
-  "flac", # Library and tools for encoding and decoding the FLAC lossless audio file format
-  "nicotine-plus", # p2p music sharing platform
-  "spek", # Audio file spectrogram analysis
-
   "bottles", # Wine manager
   # "godot_4", # Game engine
   "input-remapper", # Remap input device controls
