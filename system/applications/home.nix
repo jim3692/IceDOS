@@ -41,7 +41,7 @@ in
             };
 
             kitty = {
-              enable = true;
+              enable = (user != "server");
               settings = {
                 background_opacity = "0.8";
                 confirm_os_window_close = "0";
@@ -58,7 +58,7 @@ in
             };
 
             mangohud = {
-              enable = (user != "work");
+              enable = (user != "server" && user != "work");
 
               settings = {
                 background_alpha = 0;
@@ -127,7 +127,7 @@ in
             };
 
             # Add celluloid config file
-            ".config/celluloid" = {
+            ".config/celluloid" = mkIf (!cfg.hardware.devices.server.enable) {
               source = configs/celluloid;
               recursive = true;
             };
@@ -137,7 +137,7 @@ in
           };
 
           # Set celluloid config file path
-          dconf.settings = {
+          dconf.settings = mkIf (!cfg.hardware.devices.server.enable) {
             "io/github/celluloid-player/celluloid" = {
               mpv-config-file = "file:///home/${username}/.config/celluloid/celluloid.conf";
             };
