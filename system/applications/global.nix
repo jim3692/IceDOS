@@ -72,6 +72,7 @@ in
     ./modules/gamemode.nix
     ./modules/gdm.nix
     ./modules/git.nix
+    ./modules/kernel.nix
     ./modules/kitty.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
@@ -93,21 +94,6 @@ in
     substituters = [ "https://ezkea.cachix.org" ];
     trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
   };
-
-  boot.kernelPackages =
-    # Use CachyOS optimized linux kernel
-    if
-      (
-        !cfg.hardware.devices.steamdeck
-        && !cfg.hardware.devices.server.enable
-        && builtins.pathExists /etc/icedos-version
-      )
-    then
-      pkgs.linuxPackages_cachyos
-    else if (cfg.hardware.devices.server.enable && builtins.pathExists /etc/icedos-version) then
-      pkgs.linuxPackages_cachyos-server
-    else
-      pkgs.linuxPackages_zen;
 
   environment.systemPackages =
     (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ packageWraps ++ shellScripts;
