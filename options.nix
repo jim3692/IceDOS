@@ -243,8 +243,10 @@
           bootEntries = mkOption { type = types.number; };
 
           garbageCollect = {
+            automatic = mkOption { type = types.bool; };
             days = mkOption { type = types.number; };
             generations = mkOption { type = types.number; };
+            interval = mkOption { type = types.str; };
           };
         };
 
@@ -412,6 +414,7 @@
           containerManager = {
             enable = mkOption { type = types.bool; };
             usePodman = mkOption { type = types.bool; };
+            requireSudoForDocker = mkOption { type = types.bool; };
           };
 
           libvirtd = mkOption { type = types.bool; };
