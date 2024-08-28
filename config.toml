@@ -70,7 +70,7 @@ enable = false
 desktopSession = "hyprland"
 
 [icedos.applications.tailscale]
-enable = false
+enable = true
 enableTrayscale = false
 
 [icedos.applications.valent]
