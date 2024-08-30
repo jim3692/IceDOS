@@ -29,6 +29,7 @@
 
         librewolf = {
           enable = mkOption { type = types.bool; };
+          default = mkOption { type = types.bool; };
           overrides = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
 
@@ -39,6 +40,7 @@
         };
 
         nvchad = mkOption { type = types.bool; };
+        solaar = mkOption { type = types.bool; };
 
         steam = {
           enable = mkOption { type = types.bool; };
@@ -66,6 +68,18 @@
 
         valent.deviceId = mkOption { type = types.str; };
         zed = mkOption { type = types.bool; };
+
+        zen-browser = {
+          enable = mkOption { type = types.bool; };
+          default = mkOption { type = types.bool; };
+          overrides = mkOption { type = types.bool; };
+          privacy = mkOption { type = types.bool; };
+
+          pwas = {
+            enable = mkOption { type = types.bool; };
+            sites = mkOption { type = with types; listOf str; };
+          };
+        };
       };
 
       bootloader = {

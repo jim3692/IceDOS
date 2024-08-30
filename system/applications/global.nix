@@ -67,12 +67,14 @@ in
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
     ./modules/nvchad
+    ./modules/solaar.nix
     ./modules/steam.nix
     ./modules/sunshine.nix
     ./modules/tailscale.nix
     ./modules/tmux
     ./modules/waydroid.nix
     ./modules/zed
+    ./modules/zen-browser
     ./modules/zsh
 
     # Enable Genshin Impact launcher
@@ -100,8 +102,5 @@ in
     mullvad-vpn.enable = true;
     openssh.enable = true;
     fwupd.enable = true;
-    udev.packages = with pkgs; [
-      logitech-udev-rules # Needed for solaar to work
-    ];
   };
 }
