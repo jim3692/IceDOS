@@ -7,7 +7,7 @@ mangohud = true
 nvchad = false
 solaar = true
 sunshine = false
-zed = false
+zed = true
 
 [icedos.applications.codium]
 enable = true
