@@ -129,12 +129,12 @@ dashToPanel = true
 gsconnect = false
 
 [icedos.desktop.gnome.clock]
-date = true    # Show the month and day of the month on the clock
+date = true # Show the month and day of the month on the clock
 weekday = true # Show the day of the week on the clock
 
 [icedos.desktop.gnome.workspaces]
 dynamicWorkspaces = true
-maxWorkspaces = 1        # Determines the maximum number of workspaces when dynamic workspaces are disabled
+maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic workspaces are disabled
 
 [icedos.desktop.hyprland]
 enable = false
@@ -142,8 +142,8 @@ backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
 
 [icedos.desktop.hyprland.lock]
 secondsToLowerBrightness = 60
-cpuUsageThreshold = 60            # CPU usage to inhibit lock in percentage
-diskUsageThreshold = 10           # Disk usage to inhibit lock in MB/s
+cpuUsageThreshold = 60 # CPU usage to inhibit lock in percentage
+diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
 networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
@@ -152,7 +152,7 @@ mounts = true # Set to false if hardware/mounts.nix is not correctly configured
 [icedos.hardware.btrfs.compression]
 enable = true
 mounts = true # Use btrfs compression for mounted drives
-root = true   # Use btrfs compression for / (root)
+root = true # Use btrfs compression for / (root)
 
 [icedos.hardware.cpus]
 intel = false
@@ -246,9 +246,9 @@ bootEntries = 30
 
 [icedos.system.generations.garbageCollect]
 automatic = false
-days = 7          # Number of days before a generation can be deleted
-generations = 5   # Number of generations that will always be kept
-interval = "7d"   # Format(https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)
+days = 7 # Number of days before a generation can be deleted
+generations = 5 # Number of generations that will always be kept
+interval = "7d" # Format(https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)
 
 [icedos.system.users.main]
 enable = true
@@ -350,7 +350,7 @@ username = "server"
 description = "Server"
 
 [icedos.system.users.server.applications.codium]
-autoSave = "off"     # off, afterDelay, onFocusChange, onWindowChange
+autoSave = "off" # off, afterDelay, onFocusChange, onWindowChange
 formatOnSave = true
 formatOnPaste = true
 
@@ -388,7 +388,7 @@ enable = true
 seconds = 900
 
 [icedos.system.virtualisation]
-libvirtd = true  # A daemon that manages virtual machines
+libvirtd = true # A daemon that manages virtual machines
 waydroid = false # Android container
 
 [icedos.system.virtualisation.containerManager]
