@@ -3,6 +3,7 @@ myPackages = [
   "audacity", # Sound editor with graphical UI
   "bun", # Incredibly fast JavaScript runtime, bundler, transpiler and package manager
   "gsound", # Small library for playing system sounds (required to show file properties in Nautilus)
+  "handbrake", # Tool for converting video files and ripping DVDs
   "mullvad-vpn", # The GUI client for mullvad
   "nextcloud-client", # Nextcloud themed desktop client
   "spotify", # Music streaming service
@@ -26,7 +27,7 @@ packages = [
   # "appimage-run", # Appimage runner
   # "bat", # Better cat command
   # "bless", # HEX Editor
-  # "curtail", # Image compressor
+  "curtail", # Image compressor
   # "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries
   # "endeavour", # Tasks
@@ -58,7 +59,7 @@ packages = [
   # "tree", # Display folder content at a tree format
   "unrar", # Support opening rar files
   "unzip", # An extraction utility
-  # "warp", # File sync
+  "warp", # File sync
   "wget", # Terminal downloader
   "wine", # Compatibility layer capable of running Windows applications
   "winetricks", # Wine prefix settings manager
