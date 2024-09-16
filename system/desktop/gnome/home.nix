@@ -123,7 +123,6 @@ in
               enabled-extensions =
                 [
                   "appindicatorsupport@rgcjonas.gmail.com"
-                  "pano@elhan.io"
                   "quick-settings-tweaks@qwreey"
                   "user-theme@gnome-shell-extensions.gcampax.github.com"
                 ]
