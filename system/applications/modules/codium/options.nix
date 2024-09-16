@@ -56,6 +56,7 @@ mkIf (cfg.applications.codium.enable) {
             "gitlens.defaultTimeFormat": "HH:mm",
             "gitlens.statusBar.enabled": false,
             "nix.formatterPath": "nixfmt",
+            "scm.showHistoryGraph": false,
             "terminal.integrated.cursorBlinking": true,
             "terminal.integrated.cursorStyle": "line",
             "terminal.integrated.smoothScrolling": true,
