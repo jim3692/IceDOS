@@ -3,7 +3,6 @@ android-tools = true
 brave = false
 celluloid = true
 clamav = false
-mangohud = true
 nvchad = false
 solaar = true
 sunshine = false
@@ -33,6 +32,10 @@ extensions = [
   "ziyasal.vscode-open-in-github",
 ]
 zoomLevel = 1
+
+[icedos.applications.mangohud]
+enable = true
+maxFpsLimit = 120 # Use 0 for unlimited
 
 [icedos.applications.emulators]
 switch = false
@@ -82,7 +85,7 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 enable = false
 
 [icedos.applications.zed.theme]
-dark = "One Dark"
+dark = "One Dark Pro"
 light = "One Light"
 mode = "system" # system, dark, light
 
@@ -93,7 +96,7 @@ overrides = false
 privacy = false
 
 [icedos.applications.zen-browser.pwas]
-enable = true
+enable = false
 sites = [
   "https://app.tuta.com",
   "https://develop.element.io",
@@ -146,6 +149,12 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 [icedos.desktop.hyprland]
 enable = false
 backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
+mainMonitor = "DP-1"
+
+[icedos.desktop.hyprland.cs2fix]
+enable = true
+width = 1440
+height = 1080
 
 [icedos.desktop.hyprland.lock]
 secondsToLowerBrightness = 60
@@ -195,9 +204,7 @@ cuda = false
 enable = true
 value = 242
 
-[icedos.hardware.monitors.a]
-enable = true
-deck = false
+[[icedos.hardware.monitors]]
 name = "DP-1"
 resolution = "3440x1440"
 refreshRate = 120
@@ -205,33 +212,11 @@ position = "0x0"
 scaling = 1
 rotation = 0
 
-[icedos.hardware.monitors.b]
-enable = true
-deck = false
+[[icedos.hardware.monitors]]
 name = "DP-2"
 resolution = "1920x1080"
 refreshRate = 60
 position = "3440x360"
-scaling = 1
-rotation = 0
-
-[icedos.hardware.monitors.c]
-enable = false
-deck = false
-name = "DP-3"
-resolution = "1280x1024"
-refreshRate = 75
-position = "1920x0"
-scaling = 1
-rotation = 0
-
-[icedos.hardware.monitors.d]
-enable = false
-deck = false
-name = "HDMI-A-1"
-resolution = "3840x2160"
-refreshRate = 60
-position = "-5200x0"
 scaling = 1
 rotation = 0
 
