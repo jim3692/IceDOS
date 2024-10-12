@@ -26,14 +26,14 @@ codingDeps = [
 packages = [
   # "appimage-run", # Appimage runner
   # "bat", # Better cat command
-  # "bless", # HEX Editor
   "curtail", # Image compressor
   # "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries
   # "endeavour", # Tasks
   "fd", # Find alternative
   "fragments", # Bittorrent client following Gnome UI standards
-  # "gimp", # Image editor
+  # "ghex", # HEX Editor
+  "gimp", # Image editor
   "gping", # ping with a graph
   # "gthumb", # Image viewer
   # "iotas", # Notes

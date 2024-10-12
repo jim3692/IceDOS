@@ -90,6 +90,8 @@
           ./system/desktop
           ./system/desktop/gnome
 
+          ./system/applications/modules/zen-browser
+
           ./system/applications/users/main
           ./system/applications/users/work
 
