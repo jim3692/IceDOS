@@ -194,7 +194,7 @@ ip = "192.168.1.3"
 
 [icedos.hardware.gpus.amd]
 enable = true
-rocm = true
+rocm = false
 
 [icedos.hardware.gpus.nvidia]
 enable = false
