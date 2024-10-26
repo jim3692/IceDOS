@@ -75,6 +75,7 @@ in
                 "application/x-ms-dos-executable" = "wine.desktop";
                 "application/x-shellscript" = "codium.desktop";
                 "application/x-wine-extension-ini" = "codium.desktop";
+                "application/x-zerosize" = "codium.desktop";
                 "application/zip" = "org.gnome.FileRoller.desktop";
                 "audio/aac" = "io.bassi.Amberol.desktop";
                 "audio/flac" = "io.bassi.Amberol.desktop";
