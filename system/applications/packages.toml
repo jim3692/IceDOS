@@ -4,8 +4,10 @@ myPackages = [
   "bun", # Incredibly fast JavaScript runtime, bundler, transpiler and package manager
   "gsound", # Small library for playing system sounds (required to show file properties in Nautilus)
   "handbrake", # Tool for converting video files and ripping DVDs
+  "jetbrains.webstorm", # Professional IDE for Web and JavaScript development
   "mullvad-vpn", # The GUI client for mullvad
   "nextcloud-client", # Nextcloud themed desktop client
+  "pnpm", # Fast, disk space efficient package manager for JavaScript
   "spotify", # Music streaming service
   "ungoogled-chromium", # Chromium with dependencies on Google web services removed
   "vesktop", # An open source discord client
