@@ -8,7 +8,7 @@ emulators = [
   # "duckstation", # PS1
   # "pcsx2", # PS2
   # "ppsspp", # PSP
-  # "rpcs3", # PS3
+  "rpcs3", # PS3
 ]
 
 gaming = [
