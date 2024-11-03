@@ -69,7 +69,10 @@
           enableTrayscale = mkOption { type = types.bool; };
         };
 
-        valent.deviceId = mkOption { type = types.str; };
+        valent = {
+          enable = mkOption { type = types.bool; };
+          deviceId = mkOption { type = types.str; };
+        };
 
         zed = {
           enable = mkOption { type = types.bool; };
@@ -148,6 +151,7 @@
         hyprland = {
           enable = mkOption { type = types.bool; };
           backlight = mkOption { type = types.str; };
+          hyprexpo = mkOption { type = types.bool; };
 
           cs2fix = {
             enable = mkOption { type = types.bool; };
@@ -202,6 +206,8 @@
 
           steamdeck = mkOption { type = types.bool; };
         };
+
+        drivers.xpadneo = mkOption { type = types.bool; };
 
         gpus = {
           amd = {

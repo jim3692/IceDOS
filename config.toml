@@ -79,6 +79,7 @@ enable = true
 enableTrayscale = false
 
 [icedos.applications.valent]
+enable = false
 deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
@@ -150,6 +151,7 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 [icedos.desktop.hyprland]
 enable = false
 backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
+hyprexpo = true # Activity viewer
 mainMonitor = "DP-1"
 
 [icedos.desktop.hyprland.cs2fix]
@@ -184,6 +186,9 @@ value = "-p 0 -v 40 -f B0" # Pstate 0, 1.15 voltage, 4400 clock speed
 [icedos.hardware.devices]
 laptop = false
 steamdeck = false
+
+[icedos.hardware.drivers]
+xpadneo = true # Xbox gamepad bluetooth driver (supports various xinput controllers)
 
 [icedos.hardware.devices.server]
 enable = false
