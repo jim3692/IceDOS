@@ -92,7 +92,7 @@ light = "One Light"
 mode = "system" # system, dark, light
 
 [icedos.applications.zen-browser]
-enable = true
+enable = false
 default = false
 overrides = false
 privacy = false

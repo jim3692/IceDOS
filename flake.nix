@@ -36,11 +36,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:MarceColl/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
   outputs =
@@ -54,7 +49,6 @@
       pipewire-screenaudio,
       shell-in-netns,
 
-      zen-browser,
     }@inputs:
     {
       nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -89,8 +83,6 @@
 
           ./system/desktop
           ./system/desktop/gnome
-
-          ./system/applications/modules/zen-browser
 
           ./system/applications/users/main
           ./system/applications/users/work
