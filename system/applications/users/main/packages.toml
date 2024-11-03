@@ -1,6 +1,7 @@
 myPackages = [
   "flac", # Library and tools for encoding and decoding the FLAC lossless audio file format
   "nicotine-plus", # p2p music sharing platform
+  "nodejs_20", # Node package manager
   "spek", # Audio file spectrogram analysis
 ]
 

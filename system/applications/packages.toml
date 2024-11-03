@@ -21,7 +21,7 @@ codingDeps = [
   # "gdtoolkit_4", # Tools for gdscript
   # "gnumake", # A tool to control the generation of non-source files from sources
   "nixfmt-rfc-style", # A nix formatter
-  "nodejs_18", # Node package manager
+  # "nodejs", # Node package manager
   "python3", # Python
 ]
 
