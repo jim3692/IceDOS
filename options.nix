@@ -43,6 +43,8 @@
         };
 
         nvchad = mkOption { type = types.bool; };
+        php = mkOption { type = types.bool; };
+        pitivi = mkOption { type = types.bool; };
         solaar = mkOption { type = types.bool; };
 
         steam = {
@@ -73,6 +75,8 @@
           enable = mkOption { type = types.bool; };
           deviceId = mkOption { type = types.str; };
         };
+
+        yazi = mkOption { type = types.bool; };
 
         zed = {
           enable = mkOption { type = types.bool; };
@@ -171,6 +175,8 @@
       };
 
       hardware = {
+        bluetooth = mkOption { type = types.bool; };
+
         btrfs.compression = {
           enable = mkOption { type = types.bool; };
           mounts = mkOption { type = types.bool; };

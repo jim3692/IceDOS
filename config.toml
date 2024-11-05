@@ -4,8 +4,11 @@ brave = false
 celluloid = true
 clamav = false
 nvchad = false
+php = false
+pitivi = false
 solaar = true
 sunshine = false
+yazi = false
 
 [icedos.applications.codium]
 enable = true
@@ -166,6 +169,7 @@ diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
 networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
+bluetooth = true
 mounts = true # Set to false if hardware/mounts.nix is not correctly configured
 
 [icedos.hardware.btrfs.compression]

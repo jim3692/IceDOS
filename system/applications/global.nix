@@ -67,12 +67,15 @@ in
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
     ./modules/nvchad
+    ./modules/php.nix
+    ./modules/pitivi.nix
     ./modules/solaar.nix
     ./modules/steam.nix
     ./modules/sunshine.nix
     ./modules/tailscale.nix
     ./modules/tmux
     ./modules/waydroid.nix
+    ./modules/yazi.nix
     ./modules/zed
     ./modules/zsh
 

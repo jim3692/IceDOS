@@ -30,8 +30,8 @@ in
     ../../applications/modules/hypridle.nix
     ../../applications/modules/swaync
     ../../applications/modules/valent.nix
+    ../../applications/modules/waybar
     ./configs/config.nix
-    ./configs/waybar/config.nix
     ./configs/wleave/style.nix
     ./home.nix
   ];
@@ -46,7 +46,6 @@ in
       with pkgs;
       [
         baobab # Disk usage analyser
-        blueberry # Bluetooth manager
         brightnessctl # Brightness control
         cliphist # Clipboard manager for wayland
         feh # Minimal image viewer
@@ -66,16 +65,15 @@ in
         hyprlock # Lock
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
+        hyprpolkitagent # Polkit manager
         hyprshade # Shader config tool
         networkmanagerapplet # Network manager tray icon
-        polkit_gnome # Polkit manager
         poweralertd # Battery level alerts
         rofi-wayland # App launcher
         slurp # Monitor selector
         swappy # Edit screenshots
         swayosd # Notifications for volume, caps lock etc.
         sysstat # Needed for disk-watcher
-        waybar # Status bar
         wdisplays # Displays manager
         wl-clipboard # Clipboard daemon
         wleave # Logout screen
@@ -84,7 +82,11 @@ in
   };
 
   services = {
-    dbus.enable = true;
+    dbus = {
+      enable = true;
+      implementation = "broker";
+    };
+
     gnome.gnome-keyring.enable = true;
   };
 
@@ -118,4 +120,6 @@ in
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
+
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 }
