@@ -42,11 +42,4 @@ in
     ]
     ++ emulators
     ++ gaming;
-
-  services = {
-    input-remapper = {
-      enable = true;
-      enableUdevRules = true;
-    };
-  };
 }
