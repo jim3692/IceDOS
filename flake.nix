@@ -76,10 +76,11 @@
           nerivations.nixosModules.default
 
           ./system/desktop
+
           ./system/desktop/gnome
 
-          ./system/applications/users/main
-          ./system/applications/users/work
+          ./system/users/stef.nix
+          ./system/users/work.nix
 
         ];
       };

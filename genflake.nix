@@ -1,15 +1,15 @@
 let
-  lib = import <nixpkgs/lib>;
   inherit (lib) attrNames concatImapStrings filter;
-
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
-  users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-
+  channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
+  gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
+  lib = import <nixpkgs/lib>;
   php = cfg.applications.php;
   server = cfg.hardware.devices.server.enable;
   steam-session = cfg.applications.steam.session.enable;
-  switch-emulators = cfg.applications.emulators.switch;
+  suyu = cfg.applications.suyu;
+  users = attrNames cfg.system.users;
   zen-browser = cfg.applications.zen-browser.enable;
 in
 {
@@ -23,6 +23,10 @@ in
           url = "github:NixOS/nixpkgs/nixos-unstable";
           follows = "chaotic/nixpkgs";
         };
+
+        ${
+          concatImapStrings (i: channel: ''${channel}.url = github:NixOS/nixpkgs/${channel};''\n'') channels
+        }
 
         # Modules
         home-manager = {
@@ -90,9 +94,9 @@ in
         };
 
         ${
-          if (switch-emulators) then
+          if (suyu) then
             ''
-              switch-emulators = {
+              suyu = {
                 url = "git+https:///codeberg.org/K900/yuzu-flake";
                 inputs.nixpkgs.follows = "nixpkgs";
               };
@@ -126,8 +130,9 @@ in
           ${if (hyprland) then ''hyprland,hyprland-plugins,hyprlux,'' else ""}
           ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
-          ${if (switch-emulators) then ''switch-emulators,'' else ""}
+          ${if (suyu) then ''suyu,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
+          ${concatImapStrings (i: channel: ''${channel},'') channels}
         }@inputs:
         {
           nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -161,7 +166,23 @@ in
               nerivations.nixosModules.default
 
               ${
-                if (!server && steam-session) then
+                concatImapStrings (
+                  i: channel:
+                  ''({config, ...}: { nixpkgs.config.packageOverrides.${channel} = import ${channel} { config = config.nixpkgs.config; }; })''
+                ) channels
+              }
+
+              ${
+                if (!server) then
+                  ''
+                    ./system/desktop
+                  ''
+                else
+                  ""
+              }
+
+              ${
+                if (steam-session) then
                   ''
                     steam-session.nixosModules.default
                     ./system/desktop/steam-session.nix
@@ -171,7 +192,7 @@ in
               }
 
               ${
-                if (!server && hyprland) then
+                if (hyprland) then
                   ''
                     hyprland.nixosModules.default
                     hyprlux.nixosModules.default
@@ -183,9 +204,8 @@ in
               }
 
               ${
-                if (!server) then
+                if (gnome) then
                   ''
-                    ./system/desktop
                     ./system/desktop/gnome
                   ''
                 else
@@ -194,7 +214,7 @@ in
 
               ${if (zen-browser) then ''./system/applications/modules/zen-browser'' else ""}
 
-              ${concatImapStrings (i: user: "./system/applications/users/${user}\n") users}
+              ${concatImapStrings (i: user: "./system/users/${user}.nix\n") users}
             ];
           };
         };

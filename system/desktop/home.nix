@@ -4,13 +4,9 @@
   lib,
   ...
 }:
-let
-  inherit (lib)
-    attrNames
-    filter
-    foldl'
-    ;
 
+let
+  inherit (lib) mapAttrs;
   cfg = config.icedos;
 
   browser =
@@ -20,90 +16,75 @@ let
       "zen.desktop"
     else
       "";
-
-  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
-
 in
 {
-  home-manager.users =
-    let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-    in
-    mapAttrsAndKeys (
-      user:
-      let
-        username = cfg.system.users.${user}.username;
-      in
-      {
-        ${username} = {
-          gtk = {
-            enable = true;
+  home-manager.users = mapAttrs (user: _: {
+    gtk = {
+      enable = true;
 
-            theme = {
-              name = "adw-gtk3-dark";
-              package = pkgs.adw-gtk3;
-            };
+      theme = {
+        name = "adw-gtk3-dark";
+        package = pkgs.adw-gtk3;
+      };
 
-            cursorTheme.name = "Bibata-Modern-Classic";
-            iconTheme.name = "Tela-black-dark";
-          }; # Change GTK themes
+      cursorTheme.name = "Bibata-Modern-Classic";
+      iconTheme.name = "Tela-black-dark";
+    }; # Change GTK themes
 
-          dconf.settings = {
-            # Enable dark mode
-            "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    dconf.settings = {
+      # Enable dark mode
+      "org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
-            # GTK file picker
-            "org/gtk/settings/file-chooser" = {
-              sort-directories-first = true;
-              date-format = "with-time";
-              show-type-column = false;
-              show-hidden = true;
-            };
-          };
+      # GTK file picker
+      "org/gtk/settings/file-chooser" = {
+        sort-directories-first = true;
+        date-format = "with-time";
+        show-type-column = false;
+        show-hidden = true;
+      };
+    };
 
-          xdg = {
-            # Force creation of mimeapps
-            configFile."mimeapps.list".force = true;
+    xdg = {
+      # Force creation of mimeapps
+      configFile."mimeapps.list".force = true;
 
-            # Default apps
-            mimeApps = {
-              enable = true;
+      # Default apps
+      mimeApps = {
+        enable = true;
 
-              defaultApplications = {
-                "application/pdf" = browser;
-                "application/x-bittorrent" = "de.haeckerfelix.Fragments.desktop";
-                "application/x-ms-dos-executable" = "wine.desktop";
-                "application/x-shellscript" = "codium.desktop";
-                "application/x-wine-extension-ini" = "codium.desktop";
-                "application/x-zerosize" = "codium.desktop";
-                "application/zip" = "org.gnome.FileRoller.desktop";
-                "audio/aac" = "io.bassi.Amberol.desktop";
-                "audio/flac" = "io.bassi.Amberol.desktop";
-                "audio/mp3" = "io.bassi.Amberol.desktop";
-                "audio/wav" = "io.bassi.Amberol.desktop";
-                "image/avif" = "org.gnome.Loupe.desktop";
-                "image/jpeg" = "org.gnome.Loupe.desktop";
-                "image/png" = "org.gnome.Loupe.desktop";
-                "image/svg+xml" = "org.gnome.Loupe.desktop";
-                "text/html" = browser;
-                "text/plain" = "codium.desktop";
-                "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
-                "video/quicktime" = "io.github.celluloid_player.Celluloid.desktop";
-                "video/x-matroska" = "io.github.celluloid_player.Celluloid.desktop";
-                "video/x-ms-wmv" = "io.github.celluloid_player.Celluloid.desktop";
-                "x-scheme-handler/about" = browser;
-                "x-scheme-handler/http" = browser;
-                "x-scheme-handler/https" = browser;
-                "x-scheme-handler/unknown" = browser;
-              };
-            };
-          };
-
-          home.file.".icons/default" = {
-            source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
-            recursive = true;
-          }; # Set icon theme fot QT apps and Hyprland
+        defaultApplications = {
+          "application/pdf" = browser;
+          "application/x-bittorrent" = "de.haeckerfelix.Fragments.desktop";
+          "application/x-ms-dos-executable" = "wine.desktop";
+          "application/x-shellscript" = "codium.desktop";
+          "application/x-wine-extension-ini" = "codium.desktop";
+          "application/x-zerosize" = "codium.desktop";
+          "application/zip" = "org.gnome.FileRoller.desktop";
+          "audio/aac" = "io.bassi.Amberol.desktop";
+          "audio/flac" = "io.bassi.Amberol.desktop";
+          "audio/mp3" = "io.bassi.Amberol.desktop";
+          "audio/wav" = "io.bassi.Amberol.desktop";
+          "image/avif" = "org.gnome.Loupe.desktop";
+          "image/jpeg" = "org.gnome.Loupe.desktop";
+          "image/png" = "org.gnome.Loupe.desktop";
+          "image/svg+xml" = "org.gnome.Loupe.desktop";
+          "text/html" = browser;
+          "text/plain" = "codium.desktop";
+          "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
+          "video/quicktime" = "io.github.celluloid_player.Celluloid.desktop";
+          "video/x-matroska" = "io.github.celluloid_player.Celluloid.desktop";
+          "video/x-ms-wmv" = "io.github.celluloid_player.Celluloid.desktop";
+          "x-scheme-handler/about" = browser;
+          "x-scheme-handler/http" = browser;
+          "x-scheme-handler/https" = browser;
+          "x-scheme-handler/unknown" = browser;
         };
-      }
-    ) users;
+      };
+    };
+
+    home.file.".icons/default" = {
+      source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
+      recursive = true;
+    }; # Set icon theme fot QT apps and Hyprland
+  }) cfg.system.users;
 }
