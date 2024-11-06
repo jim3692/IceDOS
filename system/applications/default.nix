@@ -70,12 +70,14 @@ in
     ./modules/git.nix
     ./modules/kernel.nix
     ./modules/kitty.nix
+    ./modules/lazygit.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
     ./modules/nvchad
     ./modules/php.nix
     ./modules/pitivi.nix
+    ./modules/rust.nix
     ./modules/solaar.nix
     ./modules/steam.nix
     ./modules/store.nix

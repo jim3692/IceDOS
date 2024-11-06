@@ -40,6 +40,7 @@
         nvchad = mkOption { type = types.bool; };
         php = mkOption { type = types.bool; };
         pitivi = mkOption { type = types.bool; };
+        rust = mkOption { type = types.bool; };
         solaar = mkOption { type = types.bool; };
 
         steam = {
@@ -149,16 +150,20 @@
           };
         };
 
+        gtkAccentColor = mkOption { type = types.str; };
+
         hyprland = {
           enable = mkOption { type = types.bool; };
           backlight = mkOption { type = types.str; };
-          hyprexpo = mkOption { type = types.bool; };
 
           cs2fix = {
             enable = mkOption { type = types.bool; };
             width = mkOption { type = types.number; };
             height = mkOption { type = types.number; };
           };
+
+          gatewayVpn = mkOption { type = types.bool; };
+          hyprexpo = mkOption { type = types.bool; };
 
           lock = {
             secondsToLowerBrightness = mkOption { type = types.number; };

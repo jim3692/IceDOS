@@ -17,6 +17,7 @@ nix-shell -p git
 git clone https://github.com/CrazyStevenz/os
 cd os
 git checkout os
+sudo nix-shell scripts/install.sh
 ```
 
 ## Preview

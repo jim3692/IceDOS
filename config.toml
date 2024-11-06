@@ -6,6 +6,7 @@ clamav = false
 nvchad = false
 php = false
 pitivi = false
+rust = false
 solaar = true
 sunshine = false
 suyu = false
@@ -80,7 +81,7 @@ enable = true
 enableTrayscale = false
 
 [icedos.applications.valent]
-enable = false
+enable = true
 deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
@@ -119,6 +120,9 @@ device = "/dev/sda"
 enable = true
 mountPoint = "/boot"
 
+[icedos.desktop]
+gtkAccentColor = "#913A8B"
+
 [icedos.desktop.autologin]
 enable = true
 user = "icedborn"
@@ -152,6 +156,7 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 [icedos.desktop.hyprland]
 enable = false
 backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
+gatewayVpn = true
 hyprexpo = true # Activity viewer
 mainMonitor = "DP-1"
 
