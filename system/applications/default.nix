@@ -70,6 +70,7 @@ in
     ./modules/librewolf
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
+    ./modules/mullvad.nix
     ./modules/nvchad
     ./modules/php.nix
     ./modules/pitivi.nix
@@ -98,7 +99,6 @@ in
   };
 
   services = {
-    mullvad-vpn.enable = true;
     openssh.enable = true;
     fwupd.enable = true;
   };

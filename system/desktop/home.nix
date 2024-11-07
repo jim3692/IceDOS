@@ -68,6 +68,8 @@ in
           "application/x-shellscript" = "codium.desktop";
           "application/x-wine-extension-ini" = "codium.desktop";
           "application/x-zerosize" = "codium.desktop";
+          "application/xhtml_xml" = browser;
+          "application/xhtml+xml" = browser;
           "application/zip" = "org.gnome.FileRoller.desktop";
           "audio/aac" = "io.bassi.Amberol.desktop";
           "audio/flac" = "io.bassi.Amberol.desktop";
@@ -87,6 +89,7 @@ in
           "x-scheme-handler/http" = browser;
           "x-scheme-handler/https" = browser;
           "x-scheme-handler/unknown" = browser;
+          "x-www-browser" = browser;
         };
       };
     };
