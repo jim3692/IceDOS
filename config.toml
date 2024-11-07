@@ -125,7 +125,7 @@ enable = true
 mountPoint = "/boot"
 
 [icedos.desktop]
-gtkAccentColor = "#913A8B"
+accentColor = "#913A8B"
 
 [icedos.desktop.autologin]
 enable = true
