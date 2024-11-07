@@ -4,7 +4,6 @@ android-tools = true
 brave = false
 celluloid = true
 clamav = false
-nvchad = false
 php = false
 pitivi = false
 rust = false
@@ -279,9 +278,6 @@ formatOnPaste = false
 username = "CrazyStevenz"
 email = "github.ekta@aleeas.com"
 
-[icedos.system.users.stef.applications.nvchad]
-formatOnSave = true
-
 [icedos.system.users.stef.desktop.gnome.pinnedApps.arcmenu]
 enable = true
 list = [
@@ -327,9 +323,6 @@ formatOnPaste = false
 [icedos.system.users.work.applications.git]
 username = "CrazyStevenz"
 email = "github.ekta@aleeas.com"
-
-[icedos.system.users.work.applications.nvchad]
-formatOnSave = false
 
 [icedos.system.users.work.desktop.gnome.pinnedApps.arcmenu]
 enable = true
