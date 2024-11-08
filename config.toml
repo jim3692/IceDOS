@@ -217,6 +217,7 @@ rocm = true
 enable = false
 beta = false
 cuda = false
+open = true
 
 [icedos.hardware.gpus.nvidia.powerLimit]
 enable = true
