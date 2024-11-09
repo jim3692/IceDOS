@@ -14,6 +14,7 @@ yazi = false
 
 [icedos.applications.codium]
 enable = true
+defaultEditor = true
 extensions = [
   "codezombiech.gitignore",
   "dbaeumer.vscode-eslint",
@@ -90,12 +91,14 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
 enable = false
+defaultEditor = false
 ollamaSupport = false
+vim = false
 
 [icedos.applications.zed.theme]
 dark = "One Dark Pro"
 light = "One Light"
-mode = "system" # system, dark, light
+mode = "system" # Options: 'system', 'dark', 'light'
 
 [icedos.applications.zen-browser]
 enable = false
@@ -114,7 +117,7 @@ sites = [
 ]
 
 [icedos.bootloader]
-animation = false # Hides linux kernel logs and displays a loading interface based on OEM
+animation = true # Hides console and displays a loading interface based on OEM on boot
 
 [icedos.bootloader.grub]
 enable = false
@@ -125,7 +128,7 @@ enable = true
 mountPoint = "/boot"
 
 [icedos.desktop]
-accentColor = "#913A8B"
+accentColor = "#913A8B" # With gnome enabled this is getting overriden by gnome's selected accent color hex code
 
 [icedos.desktop.autologin]
 enable = true
@@ -137,6 +140,7 @@ autoSuspend = true
 
 [icedos.desktop.gnome]
 enable = true
+accentColor = "purple" # Options: 'blue', 'teal', 'green', 'yellow', 'orange', 'red', 'pink', 'purple', 'slate'
 hotCorners = false
 powerButtonAction = "interactive"
 startupItems = true
@@ -216,6 +220,7 @@ rocm = false
 enable = false
 beta = false
 cuda = false
+openDrivers = true
 
 [icedos.hardware.gpus.nvidia.powerLimit]
 enable = true
@@ -267,10 +272,10 @@ interval = "7d" # Format(https://www.freedesktop.org/software/systemd/man/latest
 
 [icedos.system.users.stef]
 description = "Stefanos"
-type = "main" # (main, work, server)
+type = "main" # Options: 'main', 'work', 'server'
 
 [icedos.system.users.stef.applications.codium]
-autoSave = "onFocusChange" # off, afterDelay, onFocusChange, onWindowChange
+autoSave = "onFocusChange" # Options: 'off', 'afterDelay', 'onFocusChange', 'onWindowChange'
 formatOnSave = true
 formatOnPaste = false
 
@@ -313,10 +318,10 @@ seconds = 900
 
 [icedos.system.users.work]
 description = "Work"
-type = "work" # (main, work, server)
+type = "work" # Options: 'main', 'work', 'server'
 
 [icedos.system.users.work.applications.codium]
-autoSave = "onFocusChange" # off, afterDelay, onFocusChange, onWindowChange
+autoSave = "onFocusChange" # Options: 'off', 'afterDelay', 'onFocusChange', 'onWindowChange'
 formatOnSave = true
 formatOnPaste = false
 

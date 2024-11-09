@@ -74,7 +74,9 @@ in
               "device": "${cfg.desktop.hyprland.backlight}",
               "format": "{icon}",
               "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"],
-              "tooltip-format": "{percent}%"
+              "tooltip-format": "{percent}%",
+              "on-scroll-up": "swayosd-client --brightness raise",
+              "on-scroll-down": "swayosd-client --brightness lower"
             },
 
             "battery": {
@@ -95,7 +97,7 @@ in
               "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
               "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
               "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t({device_battery_percentage})",
-              "on-click": "blueberry"
+              "on-click": "overskride"
             },
 
             "tray": {
@@ -117,9 +119,9 @@ in
               "format": "{icon} {volume}",
               "format-muted": "󰝟",
               "format-icons":  ["󰕿", "󰖀", "󰕾"],
-              "reverse-scrolling": 1,
-              "scroll-step": 5,
-              "on-click": "pavucontrol"
+              "on-click": "pavucontrol",
+              "on-scroll-up": "swayosd-client --output-volume raise",
+              "on-scroll-down": "swayosd-client --output-volume lower"
             },
 
             "hyprland/workspaces": {

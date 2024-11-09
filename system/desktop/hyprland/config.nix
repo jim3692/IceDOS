@@ -139,17 +139,19 @@ in
         bindm = $mainMod, mouse:273, resizewindow
 
         # Keyboard media buttons
-        bindel = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-        bindel = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-        bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        bindel = , XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
+        bindel = , XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
+        bindel = , XF86MonBrightnessDown, exec, swayosd-client --brightness lower
+        bindel = , XF86MonBrightnessUp, exec, swayosd-client --brightness raise
+        bindl = , XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
+        bindl = , XF86AudioNext, exec, playerctl next
         bindl = , XF86AudioPlay, exec, playerctl play-pause
         bindl = , XF86AudioPrev, exec, playerctl previous
-        bindl = , XF86AudioNext, exec, playerctl next
 
         ${
           let
             browsers = "librewolf|zen-alpha";
-            media-tools = "blueberry.py|org.pulseaudio.pavucontrol|valent";
+            media-tools = "io.github.kaii_lb.Overskride|org.pulseaudio.pavucontrol|valent";
             messengers = "WebCord|Signal|pwas|signal";
           in
           if (monitorsLength >= 3) then

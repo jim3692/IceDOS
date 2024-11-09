@@ -12,6 +12,7 @@
 
         codium = {
           enable = mkOption { type = types.bool; };
+          defaultEditor = mkOption { type = types.bool; };
           extensions = mkOption { type = with types; listOf str; };
           zoomLevel = mkOption { type = types.number; };
         };
@@ -83,7 +84,9 @@
 
         zed = {
           enable = mkOption { type = types.bool; };
+          defaultEditor = mkOption { type = types.bool; };
           ollamaSupport = mkOption { type = types.bool; };
+          vim = mkOption { type = types.bool; };
 
           theme = {
             dark = mkOption { type = types.str; };
@@ -134,6 +137,7 @@
 
         gnome = {
           enable = mkOption { type = types.bool; };
+          accentColor = mkOption { type = types.str; };
 
           extensions = {
             arcmenu = mkOption { type = types.bool; };
@@ -232,6 +236,7 @@
             enable = mkOption { type = types.bool; };
             beta = mkOption { type = types.bool; };
             cuda = mkOption { type = types.bool; };
+            openDrivers = mkOption { type = types.bool; };
 
             powerLimit = {
               enable = mkOption { type = types.bool; };
