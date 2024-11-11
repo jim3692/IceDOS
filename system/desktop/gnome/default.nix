@@ -12,9 +12,8 @@ let
 in
 {
   imports = [
-    # Setup home manager for gnome
+    ../../applications/modules/arcmenu.nix
     ./home.nix
-    # Startup programs
     ./startup.nix
 
     ../../applications/modules/arcmenu.nix
