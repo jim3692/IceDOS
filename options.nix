@@ -62,7 +62,6 @@
               desktopSession = mkOption { type = types.str; };
             };
 
-            useValveKernel = mkOption { type = types.bool; };
             user = mkOption { type = types.str; };
           };
         };
@@ -80,6 +79,7 @@
           deviceId = mkOption { type = types.str; };
         };
 
+        walker = mkOption { type = types.bool; };
         yazi = mkOption { type = types.bool; };
 
         zed = {
@@ -293,7 +293,7 @@
         };
 
         home = mkOption { type = types.str; };
-
+        kernel = mkOption { type = types.str; };
         swappiness = mkOption { type = types.number; };
 
         users = mkOption {

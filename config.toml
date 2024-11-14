@@ -10,6 +10,7 @@ rust = false
 solaar = true
 sunshine = false
 suyu = false
+walker = false
 yazi = false
 
 [icedos.applications.codium]
@@ -74,7 +75,6 @@ downloadsWorkaround = true
 
 [icedos.applications.steam.session]
 enable = false
-useValveKernel = false
 user = "icedborn"
 
 [icedos.applications.steam.session.autoStart]
@@ -249,6 +249,7 @@ ipv6 = false
 
 [icedos.system]
 home = "/home"
+kernel = "cachyos" # Options: 'cachyos', 'jovian', 'latest', 'stable'
 swappiness = 1
 version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
 

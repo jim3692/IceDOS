@@ -93,8 +93,9 @@ in
         }
 
         # Desktop usage
-        bind = $mainMod, R, exec, rofi -show drun
-        bind = $mainMod, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons
+        bind = $mainMod, R, exec, walker --modules=applications
+        bind = $mainMod, V, exec, walker --modules=clipboard
+        bind = $mainMod, E, exec, walker --modules=emojis
         bind = $mainMod, P, exec, grimblast --freeze copy area
         bind = $mainMod, L, exec, hyprlock-wrapper lock force
         bind = $mainMod SHIFT, L, exec, wleave
