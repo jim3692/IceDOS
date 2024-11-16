@@ -38,13 +38,13 @@
 
   outputs =
     {
-      chaotic,
       home-manager,
       nerivations,
       nixpkgs,
       pipewire-screenaudio,
       self,
       shell-in-netns,
+
       aagl,
 
     }@inputs:
@@ -75,7 +75,7 @@
           ./modules.nix
 
           # External modules
-          chaotic.nixosModules.default
+
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
 
