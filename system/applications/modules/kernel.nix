@@ -13,6 +13,7 @@ let
     ;
 
   cfg = config.icedos;
+  kernel = cfg.system.kernel == "jovian";
   monitors = cfg.hardware.monitors;
   noMonitors = length (monitors) == 0;
 in
@@ -23,19 +24,14 @@ in
 
     kernelPackages =
       with pkgs;
-      if (!builtins.pathExists /etc/icedos-version) then
+      if (!builtins.pathExists /etc/icedos-version && kernel) then
         linuxPackages_stable
       else
         {
-          cachyos =
-            if (cfg.hardware.devices.server.enable) then
-              linuxPackages_cachyos-server
-            else
-              linuxPackages_cachyos;
-
           jovian = linuxPackages_jovian;
           latest = linuxPackages_latest;
           stable = linuxPackages_stable;
+          zen = linuxPackages_zen;
         }
         .${cfg.system.kernel};
 
@@ -66,13 +62,6 @@ in
       "vm.page_lock_unfairness" = 1;
       "vm.swappiness" = builtins.toString (cfg.system.swappiness); # Set agressiveness of swap usage
     };
-  };
-
-  chaotic.scx = {
-    enable = false;
-    # enable = (config.boot.kernelPackages.kernel.passthru.config.CONFIG_SCHED_CLASS_EXT or null) == "y";
-    package = pkgs.scx.rustland;
-    scheduler = "scx_rustland";
   };
 
   # More sysctl params to set

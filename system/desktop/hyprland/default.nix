@@ -18,7 +18,7 @@ in
     ../../applications/modules/swaync
     ../../applications/modules/swayosd.nix
     ../../applications/modules/valent.nix
-    ../../applications/modules/walker.nix
+    ../../applications/modules/walker
     ../../applications/modules/waybar
     ../../applications/modules/wleave
     ./config.nix
