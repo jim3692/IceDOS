@@ -10,7 +10,7 @@ rust = false
 solaar = true
 sunshine = false
 suyu = false
-walker = false
+walker = true
 yazi = false
 
 [icedos.applications.codium]
@@ -162,14 +162,14 @@ dynamicWorkspaces = true
 maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic workspaces are disabled
 
 [icedos.desktop.hyprland]
-enable = false
+enable = true
 backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
 gatewayVpn = true
 hyprexpo = true # Activity viewer
 mainMonitor = "DP-1"
 
 [icedos.desktop.hyprland.cs2fix]
-enable = true
+enable = false
 width = 1440
 height = 1080
 

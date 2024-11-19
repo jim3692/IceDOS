@@ -24,6 +24,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprlux = {
+      url = "github:amadejkastelic/Hyprlux";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+
     pipewire-screenaudio = {
       url = "github:IceDBorn/pipewire-screenaudio";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +58,9 @@
       shell-in-netns,
 
       aagl,
+      hyprland,
+      hyprland-plugins,
+      hyprlux,
 
     }@inputs:
     {
@@ -86,6 +101,11 @@
             nix.settings = aagl.nixConfig; # Set up Cachix
             programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
           }
+
+          hyprland.nixosModules.default
+          hyprlux.nixosModules.default
+          ./system/desktop/hyprland
+          ./system/applications/modules/hyprlux.nix
 
           ./system/desktop/gnome
 
