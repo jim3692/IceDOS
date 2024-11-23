@@ -15,11 +15,11 @@ in
     ../../applications/modules/hypridle.nix
     ../../applications/modules/hyprlock
     ../../applications/modules/hyprpaper
-    ../../applications/modules/swaync
+    ../../applications/modules/nwg
+    ../../applications/modules/swaync.nix
     ../../applications/modules/swayosd.nix
     ../../applications/modules/valent.nix
     ../../applications/modules/walker
-    ../../applications/modules/waybar
     ../../applications/modules/wleave
     ./config.nix
   ];
@@ -29,18 +29,12 @@ in
   environment = {
     systemPackages = with pkgs; [
       baobab # Disk usage analyser
-      brightnessctl # Brightness control
-      cliphist # Clipboard manager for wayland
-      feh # Minimal image viewer
       file-roller # Archive file manager
       gnome-calculator # Calculator
-      gnome-calendar # Calendar
-      gnome-clocks # Clock
       gnome-disk-utility # Disks manager
       gnome-keyring # Keyring daemon
       gnome-online-accounts # Nextcloud integration
       gnome-themes-extra # Adwaita GTK theme
-      grim # Screenshot tool
       grimblast # Screenshot tool
       hyprfreeze # Script to freeze active hyprland window
       hyprland-per-window-layout # Per window layout
@@ -49,13 +43,10 @@ in
       hyprpolkitagent # Polkit manager
       hyprshade # Shader config tool
       networkmanagerapplet # Network manager app and tray icon
-      playerctl # MPRIS cli
       poweralertd # Battery level alerts
       slurp # Monitor selector
       swappy # Edit screenshots
-      sysstat # Needed for disk-watcher
       wdisplays # Displays manager
-      wl-clipboard # Clipboard daemon
     ];
   };
 

@@ -10,7 +10,10 @@ let
   cfg = config.icedos;
 in
 mkIf (cfg.applications.walker) {
-  environment.systemPackages = [ pkgs.walker ];
+  environment.systemPackages = with pkgs; [
+    walker
+    wl-clipboard
+  ];
 
   home-manager.users = mapAttrs (user: _: {
     home.file = {
@@ -24,6 +27,7 @@ mkIf (cfg.applications.walker) {
 
       Service = {
         ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
+        Nice = "-20";
         Restart = "on-failure";
       };
     };

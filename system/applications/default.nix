@@ -73,6 +73,7 @@ in
     ./modules/mullvad.nix
     ./modules/php.nix
     ./modules/pitivi.nix
+    ./modules/rtl8821ce.nix
     ./modules/rust.nix
     ./modules/solaar.nix
     ./modules/steam.nix
@@ -101,4 +102,7 @@ in
     openssh.enable = true;
     fwupd.enable = true;
   };
+
+  # Source: https://github.com/NixOS/nixpkgs/blob/5e4fbfb6b3de1aa2872b76d49fafc942626e2add/nixos/modules/system/activation/top-level.nix#L191
+  system.extraSystemBuilderCmds = "ln -s ${inputs.self} $out/source";
 }
