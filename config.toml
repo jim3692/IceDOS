@@ -162,7 +162,7 @@ dynamicWorkspaces = true
 maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic workspaces are disabled
 
 [icedos.desktop.hyprland]
-enable = true
+enable = false
 backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
 gatewayVpn = true
 hyprexpo = true # Activity viewer
