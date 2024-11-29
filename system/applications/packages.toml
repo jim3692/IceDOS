@@ -8,6 +8,7 @@ myPackages = [
   # "nextcloud-client", # Nextcloud themed desktop client
   "pnpm", # Fast, disk space efficient package manager for JavaScript
   "spotify", # Music streaming service
+  "sticky-notes", # Simple sticky notes app
   "ungoogled-chromium", # Chromium with dependencies on Google web services removed
   "vesktop", # An open source discord client
 ]
