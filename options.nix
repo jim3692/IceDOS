@@ -8,7 +8,7 @@
         android-tools = mkOption { type = types.bool; };
         brave = mkOption { type = types.bool; };
         celluloid = mkOption { type = types.bool; };
-        clamav = mkOption { type = types.bool; }; # Antivirus
+        clamav = mkOption { type = types.bool; };
 
         codium = {
           enable = mkOption { type = types.bool; };
@@ -16,6 +16,8 @@
           extensions = mkOption { type = with types; listOf str; };
           zoomLevel = mkOption { type = types.number; };
         };
+
+        fwupd = mkOption { type = types.bool; };
 
         kitty = {
           enable = mkOption { type = types.bool; };
@@ -48,6 +50,7 @@
         pitivi = mkOption { type = types.bool; };
         rust = mkOption { type = types.bool; };
         solaar = mkOption { type = types.bool; };
+        ssh = mkOption { type = types.bool; };
 
         steam = {
           enable = mkOption { type = types.bool; };

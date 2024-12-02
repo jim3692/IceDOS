@@ -15,11 +15,7 @@ let
   pkgFile = lib.importTOML ./packages.toml;
   myPackages = (pkgMapper pkgFile.myPackages);
   codingDeps = (pkgMapper pkgFile.codingDeps);
-
-  # Logout from any shell
-  lout = pkgs.writeShellScriptBin "lout" ''
-    pkill -KILL -u $USER
-  '';
+  lout = import modules/lout.nix { inherit pkgs; };
 
   rebuild = import modules/rebuild.nix {
     inherit pkgs config;
@@ -27,18 +23,14 @@ let
     update = "false";
   };
 
+  toggle-services = import modules/toggle-services.nix { inherit pkgs; };
+  trim-generations = import modules/trim-generations.nix { inherit pkgs; };
+
   update = import modules/rebuild.nix {
     inherit pkgs config;
     command = "update";
     update = "true";
   };
-
-  toggle-services = import modules/toggle-services.nix { inherit pkgs; };
-
-  # Trim NixOS generations
-  trim-generations = pkgs.writeShellScriptBin "trim-generations" (
-    builtins.readFile ../../scripts/trim-generations.sh
-  );
 
   shellScripts = [
     inputs.shell-in-netns.packages.${pkgs.system}.default
@@ -61,6 +53,7 @@ in
     ./modules/codium
     ./modules/container-manager.nix
     ./modules/deckbd-wrapper.nix
+    ./modules/fwupd.nix
     ./modules/gamemode.nix
     ./modules/garbage-collect
     ./modules/gdm.nix
@@ -76,6 +69,7 @@ in
     ./modules/rtl8821ce.nix
     ./modules/rust.nix
     ./modules/solaar.nix
+    ./modules/ssh.nix
     ./modules/steam.nix
     ./modules/store.nix
     ./modules/sunshine.nix
@@ -93,16 +87,4 @@ in
   environment.variables = {
     PUPPETEER_EXECUTABLE_PATH = "${pkgs.ungoogled-chromium}/bin/chromium";
   };
-
-  programs = {
-    direnv.enable = true;
-  };
-
-  services = {
-    openssh.enable = true;
-    fwupd.enable = true;
-  };
-
-  # Source: https://github.com/NixOS/nixpkgs/blob/5e4fbfb6b3de1aa2872b76d49fafc942626e2add/nixos/modules/system/activation/top-level.nix#L191
-  system.extraSystemBuilderCmds = "ln -s ${inputs.self} $out/source";
 }
