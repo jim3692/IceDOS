@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -9,6 +8,24 @@
 let
   inherit (lib) length mapAttrs;
   cfg = config.icedos;
+
+  accentColor =
+    if (!cfg.desktop.gnome.enable) then
+      "0xee${cfg.desktop.accentColor}"
+    else
+      {
+        blue = "0xee3584e4";
+        green = "0xee3a944a";
+        orange = "0xeeed5b00";
+        pink = "0xeed56199";
+        purple = "0xee9141ac";
+        red = "0xeee62d42";
+        slate = "0xee6f8396";
+        teal = "0xee2190a4";
+        yellow = "0xeec88800";
+      }
+      .${cfg.desktop.gnome.accentColor};
+
   monitors = cfg.hardware.monitors;
   monitorsLength = length (monitors);
 in
@@ -240,21 +257,23 @@ in
         exec-once = hyprland-startup
 
         ${
-          if (cfg.desktop.hyprland.hyprexpo) then
+          if (cfg.desktop.hyprland.hyprspace) then
             ''
-              plugin = ${inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo}/lib/libhyprexpo.so
-              bind = $mainMod, TAB, hyprexpo:expo, toggle
+              plugin = ${pkgs.hyprlandPlugins.hyprspace}/lib/libhyprspace.so
+
               plugin {
-                hyprexpo {
-                  columns = 3
-                  gap_size = 5
-                  bg_col = rgb(000000)
-                  workspace_method = center current
-                  enable_gesture = true
-                  gesture_distance = 300
-                  gesture_positive = true
+                overview {
+                  gapsIn = 5
+                  gapsOut = 5
+                  panelHeight = 100
+                  showEmptyWorkspace = false
+                  showNewWorkspace = false
+                  workspaceActiveBorder = ${accentColor}
                 }
               }
+
+              bind = $mainMod, TAB, overview:toggle
+              bind = $mainMod SHIFT, TAB, overview:toggle, all
             ''
           else
             ""
@@ -263,9 +282,8 @@ in
         ${
           if (cfg.desktop.hyprland.cs2fix.enable) then
             ''
-              plugin = ${
-                inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
-              }/lib/libcsgo-vulkan-fix.so
+              plugin = ${pkgs.hyprlandPlugins.csgo-vulkan-fix}/lib/libcsgo-vulkan-fix.so
+
               plugin {
                 csgo-vulkan-fix {
                   res_w = ${builtins.toString (cfg.desktop.hyprland.cs2fix.width)}
