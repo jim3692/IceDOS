@@ -97,6 +97,7 @@ in
           "application/zip" = "org.gnome.FileRoller.desktop";
           "audio/aac" = "io.bassi.Amberol.desktop";
           "audio/flac" = "io.bassi.Amberol.desktop";
+          "audio/m4a" = "io.bassi.Amberol.desktop";
           "audio/mp3" = "io.bassi.Amberol.desktop";
           "audio/wav" = "io.bassi.Amberol.desktop";
           "image/avif" = "org.gnome.Loupe.desktop";
