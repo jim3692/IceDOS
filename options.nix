@@ -12,11 +12,12 @@
 
         codium = {
           enable = mkOption { type = types.bool; };
-          defaultEditor = mkOption { type = types.bool; };
           extensions = mkOption { type = with types; listOf str; };
           zoomLevel = mkOption { type = types.number; };
         };
 
+        defaultBrowser = mkOption { type = types.str; };
+        defaultEditor = mkOption { type = types.str; };
         fwupd = mkOption { type = types.bool; };
 
         kitty = {
@@ -31,7 +32,6 @@
 
         librewolf = {
           enable = mkOption { type = types.bool; };
-          default = mkOption { type = types.bool; };
           overrides = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
 
@@ -87,7 +87,6 @@
 
         zed = {
           enable = mkOption { type = types.bool; };
-          defaultEditor = mkOption { type = types.bool; };
           ollamaSupport = mkOption { type = types.bool; };
           vim = mkOption { type = types.bool; };
 
@@ -100,7 +99,6 @@
 
         zen-browser = {
           enable = mkOption { type = types.bool; };
-          default = mkOption { type = types.bool; };
           overrides = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
 

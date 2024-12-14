@@ -23,10 +23,8 @@ let
 
   gaming = with pkgs; [
     # heroic # Cross-platform Epic Games Launcher
-    # ludusavi # Game saves cloud backup with Nextcloud
     # prismlauncher # Minecraft launcher
     protontricks # Winetricks for proton prefixes
-    # rclone # Sync to and from nextcloud
   ];
 in
 {

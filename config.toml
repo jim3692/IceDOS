@@ -4,6 +4,8 @@ android-tools = true
 brave = false
 celluloid = true
 clamav = false
+defaultBrowser = "librewolf" # Options: 'librewolf', 'zen'
+defaultEditor = "codium" # Options: 'codium', 'zed'
 fwupd = true
 php = false
 pitivi = false
@@ -17,7 +19,6 @@ yazi = false
 
 [icedos.applications.codium]
 enable = true
-defaultEditor = true
 extensions = [
   "codezombiech.gitignore",
   "dbaeumer.vscode-eslint",
@@ -51,8 +52,7 @@ enable = true
 hideDecorations = true # Hide top bar
 
 [icedos.applications.librewolf]
-enable = true
-default = true
+enable = false
 overrides = false
 privacy = false
 
@@ -93,7 +93,6 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
 enable = false
-defaultEditor = false
 ollamaSupport = false
 vim = false
 
@@ -104,7 +103,6 @@ mode = "system" # Options: 'system', 'dark', 'light'
 
 [icedos.applications.zen-browser]
 enable = false
-default = false
 overrides = false
 privacy = false
 
