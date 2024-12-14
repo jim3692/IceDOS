@@ -232,7 +232,7 @@ value = 242
 [[icedos.hardware.monitors]]
 name = "DP-1"
 resolution = "3440x1440"
-refreshRate = 120
+refreshRate = 164.87
 position = "0x0"
 scaling = 1
 rotation = 0
@@ -240,7 +240,7 @@ rotation = 0
 [[icedos.hardware.monitors]]
 name = "DP-2"
 resolution = "1920x1080"
-refreshRate = 60
+refreshRate = 59.96
 position = "3440x360"
 scaling = 1
 rotation = 0
