@@ -13,10 +13,9 @@ in
 {
   imports = [
     ../../applications/modules/arcmenu.nix
+    ../../applications/modules/dash-to-panel.nix
     ./home.nix
     ./startup.nix
-
-    ../../applications/modules/arcmenu.nix
   ];
 
   services.xserver.desktopManager.gnome.enable = cfg.enable; # Install gnome

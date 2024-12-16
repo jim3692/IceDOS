@@ -6,6 +6,7 @@ celluloid = true
 clamav = false
 defaultBrowser = "librewolf" # Options: 'librewolf', 'zen'
 defaultEditor = "codium" # Options: 'codium', 'zed'
+falkor = false
 fwupd = true
 php = false
 pitivi = false

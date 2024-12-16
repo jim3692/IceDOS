@@ -31,6 +31,7 @@ packages = [
   "efibootmgr", # Edit EFI entries
   # "endeavour", # Tasks
   "fd", # Find alternative
+  # "flare-signal", # GTK client for Signal
   "fragments", # Bittorrent client following Gnome UI standards
   # "ghex", # HEX Editor
   "gimp", # Image editor
