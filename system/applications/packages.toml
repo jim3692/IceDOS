@@ -2,10 +2,12 @@ myPackages = [
   "amberol", # A small and simple sound and music player
   # "audacity", # Sound editor with graphical UI
   # "bun", # Incredibly fast JavaScript runtime, bundler, transpiler and package manager
+  "eartag", # Simple music tag editor
   "gsound", # Small library for playing system sounds (required to show file properties in Nautilus)
   "handbrake", # Tool for converting video files and ripping DVDs
   "jetbrains.webstorm", # Professional IDE for Web and JavaScript development
   # "nextcloud-client", # Nextcloud themed desktop client
+  "parabolic", # Download web video and audio
   "pnpm", # Fast, disk space efficient package manager for JavaScript
   "spotify", # Music streaming service
   "sticky-notes", # Simple sticky notes app
