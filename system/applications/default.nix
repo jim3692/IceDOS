@@ -75,6 +75,7 @@ in
     ./modules/sunshine
     ./modules/tailscale
     ./modules/tmux
+    ./modules/virtualbox
     ./modules/waydroid
     ./modules/yazi
     ./modules/zed

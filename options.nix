@@ -364,6 +364,7 @@
 
           libvirtd = mkOption { type = types.bool; };
           waydroid = mkOption { type = types.bool; };
+          virtualbox = mkOption { type = types.bool; };
         };
 
         version = mkOption { type = types.str; };
