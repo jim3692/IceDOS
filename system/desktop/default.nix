@@ -10,8 +10,7 @@ let
   cfg = config.icedos;
 
   # Use monitor configuration for GDM (desktop monitor primary). See https://discourse.nixos.org/t/gdm-monitor-configuration/6356/4
-  monitorsXmlContent = builtins.readFile /home/stef/.config/monitors.xml;
-  monitorsConfig = pkgs.writeText "gdm_monitors.xml" monitorsXmlContent;
+  monitorsConfig = pkgs.runCommand "gdm_monitors.xml" {} "ln -s /home/stef/.config/monitors.xml $out";
 in
 {
   imports = [
